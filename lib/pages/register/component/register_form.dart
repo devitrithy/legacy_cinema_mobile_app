@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:legacy_cinema/pages/register/controller/register.controller.dart';
+import 'package:legacy_cinema/utils/components/shared/circle_avatar.comp.dart';
 import 'package:legacy_cinema/utils/components/shared/input.comp.dart';
 
 class RegisterFormMethod extends StatelessWidget {
@@ -14,10 +15,19 @@ class RegisterFormMethod extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Center(
-          child: Image.asset(
-            "assets/image/logo.png",
-            width: 100,
-          ),
+          child: Obx(() {
+            if (controller.selectedImage.value != null) {
+              return CircleAvatarPicker(
+                onTapUp: (p0) => controller.pickImage(),
+                image: FileImage(controller.selectedImage.value!),
+              );
+            } else {
+              return CircleAvatarPicker(
+                onTapUp: (p0) => controller.pickImage(),
+                image: const AssetImage("assets/image/selected_image.png"),
+              );
+            }
+          }),
         ),
         const SizedBox(
           height: 50,
@@ -135,10 +145,15 @@ class RegisterFormMethod extends StatelessWidget {
   }
 
   void loginMethod() async {
-    if (await controller.isLogin()) {
+    if (await controller.isRegister()) {
+      controller.lastnameController.text = "";
+      controller.firstnameController.text = "";
+      controller.emailController.text = "";
       controller.usernameController.text = "";
+      controller.confirmPasswordController.text = "";
       controller.passwordController.text = "";
-      Get.offNamed("/");
+      controller.selectedImage.value = null;
+      Get.offNamed("/login");
     } else {
       return;
     }

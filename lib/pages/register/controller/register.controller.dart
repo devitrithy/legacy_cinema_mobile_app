@@ -1,19 +1,31 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:legacy_cinema/pages/login/model/user.model.dart';
-import 'package:legacy_cinema/pages/login/service/login.service.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:legacy_cinema/pages/register/model/user.mode.dart';
+import 'package:legacy_cinema/pages/register/service/service.dart';
 
 class RegisterController extends GetxController {
   var isLoading = false.obs;
   var loginMessage = "".obs;
   var availableAccount = true.obs;
-  TextEditingController usernameController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
-  TextEditingController firstnameController = TextEditingController();
-  TextEditingController lastnameController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
-  TextEditingController confirmPasswordController = TextEditingController();
+  var usernameController = TextEditingController();
+  var passwordController = TextEditingController();
+  var firstnameController = TextEditingController();
+  var lastnameController = TextEditingController();
+  var emailController = TextEditingController();
+  var confirmPasswordController = TextEditingController();
   final formKey = GlobalKey<FormState>();
+  var selectedImage = Rx<File?>(null);
+
+  void pickImage() async {
+    final pickedImage =
+        await ImagePicker().pickImage(source: ImageSource.gallery);
+    if (pickedImage != null) {
+      selectedImage.value = File(pickedImage.path);
+    }
+  }
 
   String? validateUsername(String txt) {
     if (txt.length < 3) return "Username must be at least 3 characters";
@@ -58,13 +70,21 @@ class RegisterController extends GetxController {
     }
   }
 
-  Future<bool> isLogin() async {
+  Future<bool> isRegister() async {
     isLoading(true);
     try {
-      int login = await HttpService.userLogin(UserModel(
+      int login = await HttpService.registerAccount(
+        UserInfoModel(
           username: usernameController.text,
-          password: passwordController.text));
-      if (login == 200) {
+          password: passwordController.text,
+          confirmPassword: confirmPasswordController.text,
+          lastname: lastnameController.text,
+          firstname: firstnameController.text,
+          email: emailController.text,
+        ),
+        selectedImage.value!,
+      );
+      if (login == 201) {
         availableAccount(true);
         return true;
       } else if (login == 404) {
@@ -75,6 +95,7 @@ class RegisterController extends GetxController {
         return false;
       }
     } catch (e) {
+      print(e.toString());
       return false;
     } finally {
       isLoading(false);

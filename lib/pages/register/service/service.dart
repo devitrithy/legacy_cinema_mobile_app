@@ -1,22 +1,33 @@
-import 'dart:io';
+// ignore_for_file: avoid_print
 
-import 'package:flutter/services.dart';
+import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'package:legacy_cinema/pages/register/model/user.mode.dart';
 import 'package:legacy_cinema/utils/public_used.dart';
 
 class HttpService {
 //
-  static String url = "${PublicUsed.apiEndPoint}/user/register";
-  static registerAccount(UserInfoModel user, File file) async {
-    var request = http.MultipartRequest("POST", Uri.parse(url));
-    request.fields["firstname"] = user.firstname.toString();
-    request.fields["lastname"] = user.lastname.toString();
-    request.fields["email"] = user.email.toString();
-    request.fields["username"] = user.username.toString();
-    request.fields["password"] = user.password.toString();
-
-    var file = http.MultipartFile.fromBytes(
-        "", (await rootBundle.load(file.field)).buffer.asUint8List());
+  static String url = "${PublicUsed.apiEndPoint}/user";
+  static Future<int> registerAccount(UserInfoModel user, File file) async {
+    try {
+      var request = http.MultipartRequest("POST", Uri.parse(url));
+      request.fields["firstname"] = user.firstname.toString();
+      request.fields["lastname"] = user.lastname.toString();
+      request.fields["email"] = user.email.toString();
+      request.fields["username"] = user.username.toString();
+      request.fields["password"] = user.password.toString();
+      request.fields["confirmPassword"] = user.confirmPassword.toString();
+      var picture = await http.MultipartFile.fromPath('profile', file.path);
+      request.files.add(picture);
+      var res = await request.send();
+      print(res.statusCode);
+      if (res.statusCode == 201) {
+        return res.statusCode;
+      }
+      return res.statusCode;
+    } catch (e) {
+      print(e.toString());
+      return 400;
+    }
   }
 }
