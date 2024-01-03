@@ -24,13 +24,13 @@ class RegisterFormMethod extends StatelessWidget {
             } else {
               return CircleAvatarPicker(
                 onTapUp: (p0) => controller.pickImage(),
-                image: const AssetImage("assets/image/selected_image.png"),
+                image: const AssetImage("assets/image/pro.png"),
               );
             }
           }),
         ),
         const SizedBox(
-          height: 50,
+          height: 20,
         ),
         InputForm(
           label: "firstname".tr,
