@@ -116,7 +116,7 @@ class RegisterFormMethod extends StatelessWidget {
               backgroundColor:
                   MaterialStateProperty.all<Color>(Colors.red.shade800),
             ),
-            onPressed: loginMethod,
+            onPressed: registerMethod,
             icon: const Icon(Icons.account_box),
             label: Text(
               "sign_up".tr,
@@ -144,7 +144,7 @@ class RegisterFormMethod extends StatelessWidget {
     );
   }
 
-  void loginMethod() async {
+  void registerMethod() async {
     if (await controller.isRegister()) {
       controller.lastnameController.text = "";
       controller.firstnameController.text = "";

@@ -1,8 +1,12 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
+import 'package:legacy_cinema/utils/public_used.dart';
+
+// ignore: must_be_immutable
 class InputForm extends StatelessWidget {
-  const InputForm({
+  bool isKhmer = PublicUsed.storage.read("lang") == 'kh';
+  InputForm({
     Key? key,
     required this.label,
     this.validator,
@@ -23,6 +27,9 @@ class InputForm extends StatelessWidget {
       validator: validator,
       obscureText: obscureText,
       controller: controller,
+      style: TextStyle(
+        fontFamily: isKhmer ? "NotoSansKhmer" : "OpenSans",
+      ),
       decoration: InputDecoration(
         icon: icon,
         label: Text(label),

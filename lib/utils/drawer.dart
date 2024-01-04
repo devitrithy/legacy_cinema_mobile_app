@@ -9,6 +9,7 @@ class DrawerComponent extends StatelessWidget {
       child: ListView(
         children: [
           ListTile(
+            leading: Icon(Icons.home),
             onTap: () {
               //
             },

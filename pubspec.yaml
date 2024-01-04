@@ -25,3 +25,21 @@ flutter:
   uses-material-design: true
   assets:
     - assets/image/
+  fonts:
+    - family: NotoSansKhmer
+      fonts:
+        - asset: assets/fonts/khmer/NotoSansKhmer-Black.ttf
+        - asset: assets/fonts/khmer/NotoSansKhmer-Bold.ttf
+        - asset: assets/fonts/khmer/NotoSansKhmer-ExtraBold.ttf
+        - asset: assets/fonts/khmer/NotoSansKhmer-ExtraLight.ttf
+        - asset: assets/fonts/khmer/NotoSansKhmer-Light.ttf
+        - asset: assets/fonts/khmer/NotoSansKhmer-Medium.ttf
+        - asset: assets/fonts/khmer/NotoSansKhmer-Regular.ttf
+        - asset: assets/fonts/khmer/NotoSansKhmer-SemiBold.ttf
+        - asset: assets/fonts/khmer/NotoSansKhmer-Thin.ttf
+    - family: OpenSans
+      fonts:
+        - asset: assets/fonts/english/OpenSans-Light.ttf
+        - asset: assets/fonts/english/OpenSans-Regular.ttf
+        - asset: assets/fonts/english/OpenSans-Bold.ttf
+        - asset: assets/fonts/english/OpenSans-SemiBold.ttf

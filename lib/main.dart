@@ -11,13 +11,14 @@ import 'package:legacy_cinema/utils/public_used.dart';
 
 void main() async {
   await GetStorage.init();
-  Locale lang = PublicUsed.storage.read("lang") == "kh"
-      ? const Locale("kh", "KH")
-      : const Locale("en", "US");
+  bool isKhmer = PublicUsed.storage.read("lang") == "kh";
+  bool isDark = PublicUsed.storage.read("darkMode") == "dark";
+  Locale lang = isKhmer ? const Locale("kh", "KH") : const Locale("en", "US");
   runApp(
     GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: lightTheme,
+      themeMode: isDark ? ThemeMode.light : ThemeMode.dark,
       darkTheme: darkTheme,
       translations: Language(),
       locale: lang,

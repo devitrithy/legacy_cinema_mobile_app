@@ -2,8 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:legacy_cinema/utils/components/shared/input.comp.dart';
 import 'package:legacy_cinema/pages/login/controller/login.controller.dart';
+import 'package:legacy_cinema/utils/public_used.dart';
 
+// ignore: must_be_immutable
 class LoginFormMethod extends StatelessWidget {
+  var isKhmer = PublicUsed.storage.read("lang") != "kh" ? "kh" : "en";
+  var isDark = PublicUsed.storage.read("darkMode") != "dark" ? "dark" : "light";
   LoginFormMethod({super.key});
   final LoginController controller = Get.put(LoginController());
 
@@ -12,12 +16,32 @@ class LoginFormMethod extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Center(
-          child: Image.asset(
-            "assets/image/logo.png",
+        Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+          TextButton(
+            onPressed: () {
+              PublicUsed.storage.write("darkMode", isDark);
+              Get.changeThemeMode(
+                  isDark != "dark" ? ThemeMode.dark : ThemeMode.light);
+            },
+            child: Icon(isDark == "dark" ? Icons.light_mode : Icons.dark_mode),
+          ),
+          Image.asset(
+            isDark != "dark"
+                ? "assets/image/background_logo.jpg"
+                : "assets/image/logo.png",
             width: 100,
           ),
-        ),
+          TextButton(
+            onPressed: () {
+              PublicUsed.storage.write("lang", isKhmer);
+              Get.updateLocale(Locale(isKhmer, isKhmer));
+            },
+            child: Text(
+              PublicUsed.storage.read("lang") != "kh" ? "🇰🇭" : "🇺🇸",
+              style: const TextStyle(fontSize: 30),
+            ),
+          ),
+        ]),
         const SizedBox(
           height: 50,
         ),
@@ -72,6 +96,9 @@ class LoginFormMethod extends StatelessWidget {
             icon: const Icon(Icons.login),
             label: Text(
               "login".tr,
+              style: TextStyle(
+                fontFamily: isKhmer == "kh" ? "NotoSansKhmer" : "OpenSans",
+              ),
             ),
           ),
         ),
@@ -88,7 +115,7 @@ class LoginFormMethod extends StatelessWidget {
                   "sign_up".tr,
                   style: const TextStyle(color: Colors.red),
                 ),
-              )
+              ),
             ],
           ),
         ),
