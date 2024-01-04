@@ -2,7 +2,7 @@
 
 import 'dart:io';
 import 'package:http/http.dart' as http;
-import 'package:legacy_cinema/pages/register/model/user.mode.dart';
+import 'package:legacy_cinema/models/register_user.dart';
 import 'package:legacy_cinema/utils/public_used.dart';
 
 class HttpService {

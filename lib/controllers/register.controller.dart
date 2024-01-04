@@ -3,8 +3,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:legacy_cinema/pages/register/model/user.mode.dart';
-import 'package:legacy_cinema/pages/register/service/service.dart';
+import 'package:legacy_cinema/models/register_user.dart';
+import 'package:legacy_cinema/services/register_service.dart';
 
 class RegisterController extends GetxController {
   var isLoading = false.obs;
@@ -27,8 +27,8 @@ class RegisterController extends GetxController {
     }
   }
 
-  String? validateUsername(String txt) {
-    if (txt.length < 3) return "Username must be at least 3 characters";
+  String? validateString(String field, String txt) {
+    if (txt.length < 3) return "$field must be at least 3 characters";
     return null;
   }
 

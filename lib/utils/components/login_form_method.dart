@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:legacy_cinema/utils/components/shared/input.comp.dart';
-import 'package:legacy_cinema/pages/login/controller/login.controller.dart';
+import 'package:legacy_cinema/controllers/login.controller.dart';
 import 'package:legacy_cinema/utils/components/shared/language_switch.dart';
 import 'package:legacy_cinema/utils/components/shared/switch_mode.dart';
 import 'package:legacy_cinema/utils/public_used.dart';
 
 // ignore: must_be_immutable
 class LoginFormMethod extends StatelessWidget {
-  var isKhmer = PublicUsed.storage.read("lang") != "kh" ? "kh" : "en";
-  var isDark = PublicUsed.storage.read("darkMode") != "dark" ? "dark" : "light";
+  var isKhmer = PublicUsed.changeLanguage();
+  var isDark = PublicUsed.changeTheme();
   LoginFormMethod({super.key});
   final LoginController controller = Get.put(LoginController());
 
@@ -24,8 +24,8 @@ class LoginFormMethod extends StatelessWidget {
           ),
           Image.asset(
             isDark != "dark"
-                ? "assets/image/background_logo.jpg"
-                : "assets/image/logo.png",
+                ? "assets/image/light_logo.png"
+                : "assets/image/dark_logo.png",
             width: 100,
           ),
           LanguageSwitch(

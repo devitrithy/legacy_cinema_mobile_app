@@ -7,4 +7,24 @@ class PublicUsed {
   static const apiEndPoint = localNetwork;
   static final storage = GetStorage();
   static const token = "c56509ca-a859-41ed-8d37-82765233a875";
+
+  static String changeTheme() {
+    return storage.read("darkMode") == "dark" ? "light" : "dark";
+  }
+
+  static String changeLanguage() {
+    return storage.read("lang") == "kh" ? "en" : "kh";
+  }
+
+  static bool isDark() {
+    return storage.read('darkMode') == "dark" ? true : false;
+  }
+
+  static bool isKhmer() {
+    return storage.read('lang') == "kh" ? true : false;
+  }
+
+  static bool checkToken() {
+    return storage.read(token) != null ? true : false;
+  }
 }

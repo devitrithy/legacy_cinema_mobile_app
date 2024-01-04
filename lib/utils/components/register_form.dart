@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:legacy_cinema/pages/register/controller/register.controller.dart';
+import 'package:legacy_cinema/controllers/register.controller.dart';
 import 'package:legacy_cinema/utils/components/shared/circle_avatar.comp.dart';
 import 'package:legacy_cinema/utils/components/shared/input.comp.dart';
 
@@ -34,7 +34,7 @@ class RegisterFormMethod extends StatelessWidget {
         ),
         InputForm(
           label: "firstname".tr,
-          validator: (txt) => controller.validateUsername(txt!),
+          validator: (txt) => controller.validateString("Firstname", txt!),
           icon: const Icon(Icons.accessibility),
           controller: controller.firstnameController,
         ),
@@ -43,7 +43,7 @@ class RegisterFormMethod extends StatelessWidget {
         ),
         InputForm(
           label: "lastname".tr,
-          validator: (txt) => controller.validateUsername(txt!),
+          validator: (txt) => controller.validateString("Lastname", txt!),
           icon: const Icon(Icons.accessibility_new),
           controller: controller.lastnameController,
         ),
@@ -61,7 +61,7 @@ class RegisterFormMethod extends StatelessWidget {
         ),
         InputForm(
           label: "username".tr,
-          validator: (txt) => controller.validateUsername(txt!),
+          validator: (txt) => controller.validateString("Username", txt!),
           icon: const Icon(Icons.person),
           controller: controller.usernameController,
         ),
@@ -145,17 +145,20 @@ class RegisterFormMethod extends StatelessWidget {
   }
 
   void registerMethod() async {
-    if (await controller.isRegister()) {
-      controller.lastnameController.text = "";
-      controller.firstnameController.text = "";
-      controller.emailController.text = "";
-      controller.usernameController.text = "";
-      controller.confirmPasswordController.text = "";
-      controller.passwordController.text = "";
-      controller.selectedImage.value = null;
-      Get.offNamed("/login");
-    } else {
-      return;
+    if (controller.formKey.currentState!.validate()) {
+      if (await controller.isRegister()) {
+        controller.lastnameController.text = "";
+        controller.firstnameController.text = "";
+        controller.emailController.text = "";
+        controller.usernameController.text = "";
+        controller.confirmPasswordController.text = "";
+        controller.passwordController.text = "";
+        controller.selectedImage.value = null;
+        Get.offNamed("/login");
+      } else {
+        return;
+      }
     }
+    return;
   }
 }

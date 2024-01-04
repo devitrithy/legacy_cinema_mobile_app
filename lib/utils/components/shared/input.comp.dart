@@ -5,7 +5,7 @@ import 'package:legacy_cinema/utils/public_used.dart';
 
 // ignore: must_be_immutable
 class InputForm extends StatelessWidget {
-  bool isKhmer = PublicUsed.storage.read("lang") == 'kh';
+  bool isKhmer = PublicUsed.isKhmer();
   InputForm({
     Key? key,
     required this.label,

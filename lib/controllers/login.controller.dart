@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:legacy_cinema/pages/login/model/user.model.dart';
-import 'package:legacy_cinema/pages/login/service/login.service.dart';
+import 'package:legacy_cinema/models/login_user.model.dart';
+import 'package:legacy_cinema/services/login.service.dart';
 
 class LoginController extends GetxController {
   var isLoading = false.obs;

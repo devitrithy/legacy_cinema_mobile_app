@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:legacy_cinema/pages/login/model/token.model.dart';
-import 'package:legacy_cinema/pages/login/model/user.model.dart';
+import 'package:legacy_cinema/models/token.model.dart';
+import 'package:legacy_cinema/models/login_user.model.dart';
 import 'package:legacy_cinema/utils/public_used.dart';
 
 class HttpService {
