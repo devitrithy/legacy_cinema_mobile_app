@@ -13,12 +13,24 @@ class LoginController extends GetxController {
 
   String? validateUsername(String txt) {
     if (txt.toString().trim().isEmpty) {
-      return "Username can't be empty";
+      return "username_cant_be_empty".tr;
     } else if (txt.length < 3) {
-      return "Username must be at least 3 characters";
+      return "username_must_be_at_least_3_characters";
     } else {
       return null;
     }
+  }
+
+  String? validatePassword(String value) {
+    final RegExp passwordRegex =
+        RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
+
+    if (value.isEmpty) {
+      return 'password_is_required'.tr;
+    } else if (!passwordRegex.hasMatch(value)) {
+      return 'Password must contain at least \n1 Uppercase\n1 Lowercase\n1 Digit\n1 Special character\nAt least 8 characters long';
+    }
+    return null;
   }
 
   Future<bool> isLogin() async {

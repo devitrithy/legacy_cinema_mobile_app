@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:legacy_cinema/utils/components/shared/input.comp.dart';
 import 'package:legacy_cinema/pages/login/controller/login.controller.dart';
+import 'package:legacy_cinema/utils/components/shared/language_switch.dart';
+import 'package:legacy_cinema/utils/components/shared/switch_mode.dart';
 import 'package:legacy_cinema/utils/public_used.dart';
 
 // ignore: must_be_immutable
@@ -17,13 +19,8 @@ class LoginFormMethod extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-          TextButton(
-            onPressed: () {
-              PublicUsed.storage.write("darkMode", isDark);
-              Get.changeThemeMode(
-                  isDark != "dark" ? ThemeMode.dark : ThemeMode.light);
-            },
-            child: Icon(isDark == "dark" ? Icons.light_mode : Icons.dark_mode),
+          ModeSwitch(
+            isDark: isDark,
           ),
           Image.asset(
             isDark != "dark"
@@ -31,15 +28,8 @@ class LoginFormMethod extends StatelessWidget {
                 : "assets/image/logo.png",
             width: 100,
           ),
-          TextButton(
-            onPressed: () {
-              PublicUsed.storage.write("lang", isKhmer);
-              Get.updateLocale(Locale(isKhmer, isKhmer));
-            },
-            child: Text(
-              PublicUsed.storage.read("lang") != "kh" ? "🇰🇭" : "🇺🇸",
-              style: const TextStyle(fontSize: 30),
-            ),
+          LanguageSwitch(
+            isKhmer: isKhmer,
           ),
         ]),
         const SizedBox(
@@ -56,7 +46,7 @@ class LoginFormMethod extends StatelessWidget {
         ),
         InputForm(
           label: "password".tr,
-          validator: (txt) => controller.validateUsername(txt!),
+          validator: (txt) => controller.validatePassword(txt!),
           icon: const Icon(Icons.key),
           obscureText: true,
           controller: controller.passwordController,

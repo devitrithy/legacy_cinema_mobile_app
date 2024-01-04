@@ -35,6 +35,10 @@ class Language extends Translations {
           "sign_up": "Sign Up",
           "sign_in": "Sign In",
           "choose_file": "Choose File",
+          "username_cant_be_empty": "Username Can't Be Empty",
+          "username_must_be_at_least_3_characters":
+              "Username must be at least 3 characters",
+          "password_is_required": "Password is Required",
         },
         "kh_KH": {
           "movie": "ភាពយន្ត",
@@ -68,6 +72,10 @@ class Language extends Translations {
           "sign_up": "ចុះឈ្មោះ",
           "sign_in": "ចូលគណនី",
           "choose_file": "ជ្រើសរើសឯកសារ",
+          "username_cant_be_empty": "​ឈ្មោះអ្នកប្រើប្រាស់មិនគួរទរទេរ",
+          "username_must_be_at_least_3_characters":
+              "ឈ្មោះ​អ្នក​ប្រើប្រាស់​គួរ​តែ​មាន​​៣អក្សរឡើង",
+          "password_is_required": "ទៀមទារពាក្យសម្ងាត់",
         }
       };
 }
