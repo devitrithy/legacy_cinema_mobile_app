@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:legacy_cinema/controllers/home.controller.dart';
 import 'package:legacy_cinema/utils/components/shared/input.comp.dart';
 import 'package:legacy_cinema/controllers/login.controller.dart';
 import 'package:legacy_cinema/utils/components/shared/language_switch.dart';
@@ -12,6 +13,7 @@ class LoginFormMethod extends StatelessWidget {
   var isDark = PublicUsed.changeTheme();
   LoginFormMethod({super.key});
   final LoginController controller = Get.put(LoginController());
+  final HomeController homeController = Get.put(HomeController());
 
   @override
   Widget build(BuildContext context) {
@@ -118,6 +120,7 @@ class LoginFormMethod extends StatelessWidget {
       if (await controller.isLogin()) {
         controller.usernameController.text = "";
         controller.passwordController.text = "";
+        homeController.fetchData();
         Get.offNamed("/home");
       } else {
         return;

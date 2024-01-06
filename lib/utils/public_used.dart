@@ -2,7 +2,7 @@ import 'package:get_storage/get_storage.dart';
 
 class PublicUsed {
   static const local = "http://26.204.37.36:3000";
-  static const localNetwork = "http://192.168.0.101:3000";
+  static const localNetwork = "http://192.168.0.112:3000";
   static const global = "https://cinemaapi.serveo.net";
   static const apiEndPoint = localNetwork;
   static final storage = GetStorage();
@@ -26,5 +26,9 @@ class PublicUsed {
 
   static bool checkToken() {
     return storage.read(token) != null ? true : false;
+  }
+
+  static String? getToken() {
+    return storage.read(token);
   }
 }

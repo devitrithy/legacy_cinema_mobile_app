@@ -15,7 +15,7 @@ class LoginController extends GetxController {
     if (txt.toString().trim().isEmpty) {
       return "username_cant_be_empty".tr;
     } else if (txt.length < 3) {
-      return "username_must_be_at_least_3_characters";
+      return "username_must_be_at_least_3_characters".tr;
     } else {
       return null;
     }

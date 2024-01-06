@@ -8,11 +8,13 @@ ThemeData darkTheme = ThemeData(
     backgroundColor: Colors.transparent,
     elevation: 0,
     iconTheme: IconThemeData(color: Colors.white70),
+    foregroundColor: Colors.white70,
   ),
   fontFamily: isKhmer ? "NotoSansKhmer" : "OpenSans",
   colorScheme: const ColorScheme.dark(
-      background: Color.fromRGBO(17, 24, 39, 1),
-      primary: Color.fromRGBO(255, 255, 255, 1),
-      secondary: Color.fromRGBO(255, 255, 255, 0.5),
-      surface: Color.fromRGBO(199, 43, 43, 1)),
+    background: Color.fromRGBO(17, 24, 39, 1),
+    primary: Color.fromRGBO(255, 255, 255, 1),
+    secondary: Color.fromRGBO(255, 255, 255, 0.5),
+    surface: Color.fromRGBO(199, 43, 43, 1),
+  ),
 );

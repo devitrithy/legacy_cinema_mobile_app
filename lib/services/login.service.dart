@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:legacy_cinema/models/token.model.dart';
 import 'package:legacy_cinema/models/login_user.model.dart';
 import 'package:legacy_cinema/utils/public_used.dart';
 
@@ -14,8 +13,8 @@ class HttpService {
         headers: {'Content-Type': 'application/json'},
       );
       if (res.statusCode == 200) {
-        PublicUsed.storage.write(
-            PublicUsed.token, TokenModel.fromJson(json.decode(res.body)));
+        PublicUsed.storage
+            .write(PublicUsed.token, json.decode(res.body)['token']);
         return res.statusCode;
       }
       return res.statusCode;

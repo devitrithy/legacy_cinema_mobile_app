@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:legacy_cinema/utils/components/shared/switch_mode.dart';
 import 'package:legacy_cinema/utils/public_used.dart';
 
@@ -18,7 +19,14 @@ class DrawerComponent extends StatelessWidget {
           ),
           ListTile(
             leading: ModeSwitch(isDark: PublicUsed.changeTheme()),
-          )
+          ),
+          ListTile(
+            leading: Text("logout".tr),
+            onTap: () {
+              PublicUsed.storage.remove(PublicUsed.token);
+              Get.offNamed('/login');
+            },
+          ),
         ],
       ),
     );

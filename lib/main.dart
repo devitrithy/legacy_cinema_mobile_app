@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:legacy_cinema/views/home.view.dart';
 import 'package:legacy_cinema/views/login.view.dart';
+import 'package:legacy_cinema/views/movie.view.dart';
 import 'package:legacy_cinema/views/register.view.dart';
 import 'package:legacy_cinema/utils/themes/dark_theme.dart';
 import 'package:legacy_cinema/utils/themes/light_theme.dart';
@@ -28,6 +29,7 @@ void main() async {
         '/home': (p0) => HomeView(),
         "/login": (p0) => LoginView(),
         "/register": (p0) => RegisterView(),
+        "/movie_detail": (p0) => MovieView(),
       },
     ),
   );
