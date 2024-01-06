@@ -55,7 +55,8 @@ class HomeView extends StatelessWidget {
                       return ListTile(
                         title: Text(controller.movieList[index].title),
                         onTap: () {
-                          controller.movieId = controller.movieList[index].id;
+                          controller.movieIndex.value = index;
+                          controller.fetchLocations();
                           Get.toNamed('/movie_detail');
                         },
                       );

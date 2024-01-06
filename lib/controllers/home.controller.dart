@@ -1,16 +1,17 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:legacy_cinema/services/home.service.dart';
 import 'package:legacy_cinema/utils/public_used.dart';
 
 class HomeController extends GetxController {
   var isLoading = true.obs;
   var movieList = [].obs;
-  var movie = [].obs;
+  var showingTimeList = [].obs;
+  var locationList = ['All Cinemas'].obs;
   var commingSoonList = [].obs;
   var currentSlideshowIndex = 0.obs;
-  var movieId = "".obs;
+  var movieIndex = 0.obs;
+  var selectOptionLocation = 'All Cinemas'.obs;
   List<Widget> slideshowList = [];
   @override
   void onInit() {
@@ -18,15 +19,21 @@ class HomeController extends GetxController {
     super.onInit();
   }
 
-  void fetchMovie() async {
+  void fetchLocations() async {
     try {
       isLoading(true);
-      var movies = await HttpService.fetchMovieByID(movieId.toString());
+      showingTimeList.value = [];
+      locationList.value = ['All Cinemas'];
+      var movies = await HttpService.fetchShowingTime(
+          movieList[movieIndex.value].movieId);
       if (movies == 401) {
         Get.offNamed('/login');
         return;
       } else {
-        movie.value = movies;
+        for (var location in movies) {
+          locationList.add(location.locationName);
+        }
+        showingTimeList.value = movies;
       }
     } finally {
       isLoading(false);

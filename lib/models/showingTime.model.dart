@@ -1,12 +1,12 @@
 import 'dart:convert';
 
-List<Location> locationFromJson(String str) =>
-    List<Location>.from(json.decode(str).map((x) => Location.fromJson(x)));
+List<LocationModel> locationFromJson(String str) => List<LocationModel>.from(
+    json.decode(str).map((x) => LocationModel.fromJson(x)));
 
-String locationToJson(List<Location> data) =>
+String locationToJson(List<LocationModel> data) =>
     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
-class Location {
+class LocationModel {
   String? locationId;
   String? locationName;
   String? address;
@@ -16,7 +16,7 @@ class Location {
   String? map;
   List<Hall>? halls;
 
-  Location({
+  LocationModel({
     this.locationId,
     this.locationName,
     this.address,
@@ -27,7 +27,7 @@ class Location {
     this.halls,
   });
 
-  factory Location.fromJson(Map<String, dynamic> json) => Location(
+  factory LocationModel.fromJson(Map<String, dynamic> json) => LocationModel(
         locationId: json["location_id"],
         locationName: json["location_name"],
         address: json["address"],
