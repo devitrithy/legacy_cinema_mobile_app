@@ -21,8 +21,8 @@ class SlideshowWidget extends StatelessWidget {
             autoPlay: true,
             height: 100,
             autoPlayCurve: Curves.fastOutSlowIn,
-            autoPlayAnimationDuration: const Duration(milliseconds: 800),
-            autoPlayInterval: const Duration(seconds: 2),
+            autoPlayAnimationDuration: const Duration(seconds: 1),
+            autoPlayInterval: const Duration(seconds: 5),
             animateToClosest: true,
             aspectRatio: 2.0,
             enlargeCenterPage: true,
@@ -31,6 +31,9 @@ class SlideshowWidget extends StatelessWidget {
             },
           ),
           items: controller.slideshowList,
+        ),
+        const SizedBox(
+          height: 10,
         ),
         Obx(() {
           return AnimatedSmoothIndicator(

@@ -17,10 +17,12 @@ Widget buildHallWidget(Hall hall) {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: hall.showing!.map<Widget>((showing) {
             if (showing.movieId ==
-                controller.movieList[controller.movieIndex.toInt()].movieId) {
+                    controller
+                        .movieList[controller.movieIndex.toInt()].movieId &&
+                showing.showingDate!.isAfter(DateTime.now())) {
               return buildShowingWidget(showing);
             } else {
-              return Container();
+              return const SizedBox();
             }
           }).toList(),
         ),

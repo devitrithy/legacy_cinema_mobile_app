@@ -4,7 +4,9 @@ import 'package:get/get.dart';
 import 'package:legacy_cinema/controllers/home.controller.dart';
 import 'package:legacy_cinema/utils/components/hall_comp.dart';
 import 'package:legacy_cinema/utils/components/shared/background.comp.dart';
+import 'package:legacy_cinema/utils/components/shared/logo.comp.dart';
 import 'package:legacy_cinema/utils/components/shared/title_movie.comp.dart';
+import 'package:legacy_cinema/utils/components/trailer.comp.dart';
 import 'package:legacy_cinema/utils/public_used.dart';
 
 class MovieView extends StatelessWidget {
@@ -18,7 +20,8 @@ class MovieView extends StatelessWidget {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
-        title: Text(controller.movieList[controller.movieIndex.toInt()].title!),
+        title: const LogoComponent(),
+        centerTitle: true,
       ),
       body: Background(
         child: Obx(() {
@@ -28,26 +31,7 @@ class MovieView extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Container(
-                      height: 270,
-                      child: Center(
-                        child: Stack(
-                          alignment: Alignment.center,
-                          children: [
-                            Image.network(
-                              "https://img.youtube.com/vi/${controller.movieList[controller.movieIndex.toInt()].trailer}/hqdefault.jpg",
-                              width: 500,
-                              height: 400,
-                              fit: BoxFit.cover,
-                            ),
-                            TextButton.icon(
-                                onPressed: () {},
-                                icon: const Icon(Icons.play_circle, size: 50),
-                                label: const Text("")),
-                          ],
-                        ),
-                      ),
-                    ),
+                    TrailerComponent(controller: controller),
                     const SizedBox(
                       height: 20,
                     ),

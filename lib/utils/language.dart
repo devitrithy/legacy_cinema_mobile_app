@@ -21,7 +21,6 @@ class Language extends Translations {
           "setting": "Setting",
           "minute": "Minutes",
           "home": "Home",
-          "now_showing": "Now Showing",
           "location": "Location",
           "more_info": "More Info",
           "username": "Username",
@@ -76,6 +75,7 @@ class Language extends Translations {
           "username_must_be_at_least_3_characters":
               "ឈ្មោះ​អ្នក​ប្រើប្រាស់​គួរ​តែ​មាន​​៣អក្សរឡើង",
           "password_is_required": "ទៀមទារពាក្យសម្ងាត់",
+          "now_showing_movie": "ឥឡូវនេះកំពុងបញ្ចាំងភាពយន្ត",
         }
       };
 }

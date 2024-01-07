@@ -47,8 +47,20 @@ class HomeView extends StatelessWidget {
               }
               return SingleChildScrollView(
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SlideshowWidget(controller: controller),
+                    const SizedBox(height: 10),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                      child: Text("now_showing".tr.toUpperCase(),
+                          style: const TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          )),
+                    ),
+                    const SizedBox(height: 10),
                     Column(
                       children:
                           controller.movieList.asMap().entries.map((entry) {

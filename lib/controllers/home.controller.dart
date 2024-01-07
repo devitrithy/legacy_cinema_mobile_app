@@ -75,7 +75,7 @@ class HomeController extends GetxController {
       } else {
         for (var element in slideshows) {
           slideshowList.add(Image.network(
-              "${PublicUsed.apiEndPoint}/thumbnail/${element.poster!.split('\\')[1]}?w=500&h=130"));
+              "${PublicUsed.apiEndPoint}/thumbnail/${element.poster!.split('\\')[1]}?w=400&h=100"));
         }
         for (var i = 0; i < movies.length; i++) {
           if (movies[i].releaseDate!.isBefore(DateTime.now()) == true) {
