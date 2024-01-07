@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:legacy_cinema/controllers/home.controller.dart';
 import 'package:legacy_cinema/utils/components/shared/background.comp.dart';
 import 'package:legacy_cinema/utils/components/shared/language_switch.dart';
-import 'package:legacy_cinema/utils/components/shared/listTileCustome.comp.dart';
+import 'package:legacy_cinema/utils/components/shared/list_tile_custom.dart';
 import 'package:legacy_cinema/utils/components/slideshow.comp.dart';
 import 'package:legacy_cinema/utils/drawer.dart';
 import 'package:legacy_cinema/utils/public_used.dart';
@@ -30,7 +30,7 @@ class HomeView extends StatelessWidget {
         ],
       ),
       // ignore: prefer_const_constructors
-      backgroundColor: Colors.transparent,
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: Background(
         child: RefreshIndicator(
           onRefresh: () async {
@@ -45,17 +45,29 @@ class HomeView extends StatelessWidget {
               if (controller.movieList.isEmpty) {
                 Get.toNamed('/login');
               }
-              return ListView(
-                children: [
-                  SlideshowWidget(controller: controller),
-                  Column(
-                    children: controller.movieList.map((movie) {
-                      return ListTileCustome(
-                        movie: movie,
-                      );
-                    }).toList(),
-                  ),
-                ],
+              return SingleChildScrollView(
+                child: Column(
+                  children: [
+                    SlideshowWidget(controller: controller),
+                    Column(
+                      children:
+                          controller.movieList.asMap().entries.map((entry) {
+                        final index = entry.key;
+                        final movie = entry.value;
+
+                        return ListTileCustome(
+                          onTap: () {
+                            // Use index here
+                            controller.movieIndex.value = index;
+                            controller.fetchLocations();
+                            Get.toNamed('/movie_detail');
+                          },
+                          movie: movie,
+                        );
+                      }).toList(),
+                    ),
+                  ],
+                ),
               );
             }
           }),

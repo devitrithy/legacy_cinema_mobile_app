@@ -1,4 +1,4 @@
-import 'package:legacy_cinema/models/showingTime.model.dart';
+import 'package:legacy_cinema/models/showing_time.model.dart';
 
 class Hall {
   String? hallId;

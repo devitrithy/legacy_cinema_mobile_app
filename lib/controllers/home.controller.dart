@@ -66,6 +66,7 @@ class HomeController extends GetxController {
       isLoading(true);
       movieList.value = [];
       commingSoonList.value = [];
+      slideshowList = [];
       var movies = await HttpService.fetchMovies();
       var slideshows = await HttpService.fetchSlideshows();
       if (movies == 401) {
@@ -74,7 +75,7 @@ class HomeController extends GetxController {
       } else {
         for (var element in slideshows) {
           slideshowList.add(Image.network(
-              "${PublicUsed.apiEndPoint}/${element.poster!}?w=100&h=40"));
+              "${PublicUsed.apiEndPoint}/thumbnail/${element.poster!.split('\\')[1]}?w=500&h=130"));
         }
         for (var i = 0; i < movies.length; i++) {
           if (movies[i].releaseDate!.isBefore(DateTime.now()) == true) {
