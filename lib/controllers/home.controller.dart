@@ -6,10 +6,12 @@ import 'package:legacy_cinema/utils/public_used.dart';
 class HomeController extends GetxController {
   var isLoading = true.obs;
   var movieList = [].obs;
+  var seatList = [].obs;
   var showingTimeList = [].obs;
   var locationList = ['All Cinemas'].obs;
   var commingSoonList = [].obs;
   var currentSlideshowIndex = 0.obs;
+  var showingId = "".obs;
   var movieIndex = 0.obs;
   var selectOptionLocation = 'All Cinemas'.obs;
   List<Widget> slideshowList = [];
@@ -17,6 +19,25 @@ class HomeController extends GetxController {
   void onInit() {
     fetchData();
     super.onInit();
+  }
+
+  void fetchSeat() async {
+    try {
+      isLoading(true);
+      seatList.value = [];
+      var seats = await HttpService.fetchSeat(showingId.value);
+      if (seats == 401) {
+        Get.offNamed('/login');
+        return;
+      } else {
+        for (var location in seats) {
+          locationList.add(location.locationName);
+        }
+        showingTimeList.value = seats;
+      }
+    } finally {
+      isLoading(false);
+    }
   }
 
   void fetchLocations() async {
