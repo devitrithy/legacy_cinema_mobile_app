@@ -8,6 +8,7 @@ import 'package:legacy_cinema/services/home.service.dart';
 import 'package:legacy_cinema/utils/public_used.dart';
 
 class HomeController extends GetxController {
+  var selectedImage = "".obs;
   var isLoading = true.obs;
   var movieList = [].obs;
   var seatList = [].obs;
@@ -21,6 +22,7 @@ class HomeController extends GetxController {
   var movieIndex = 0.obs;
   var selectOptionLocation = 'All Cinemas'.obs;
   List<Widget> slideshowList = [];
+
   @override
   void onInit() {
     fetchData();

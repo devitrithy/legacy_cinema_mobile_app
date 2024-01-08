@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:legacy_cinema/controllers/home.controller.dart';
 
 class SeatComponent extends StatefulWidget {
@@ -41,16 +42,16 @@ class _SeatComponentState extends State<SeatComponent> {
           color: isSelect
               ? Colors.green
               : widget.isAvaialble
-                  ? Colors.grey.shade700
+                  ? Color.fromARGB(255, 75, 75, 75)
                   : Colors.red,
           Icons.chair,
-          size: 15,
+          size: 20,
         ),
         Text(
           widget.seat,
-          style: const TextStyle(
+          style: TextStyle(
             fontSize: 5,
-            color: Colors.white,
+            color: isSelect ? Colors.black : Colors.white,
           ),
         ),
       ]),

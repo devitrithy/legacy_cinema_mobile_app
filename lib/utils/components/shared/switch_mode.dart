@@ -7,13 +7,13 @@ class ModeSwitch extends StatelessWidget {
   final String isDark;
   @override
   Widget build(BuildContext context) {
-    return TextButton(
+    return IconButton(
       onPressed: () {
         PublicUsed.storage.write("darkMode", isDark);
         Get.changeThemeMode(
             isDark != "dark" ? ThemeMode.dark : ThemeMode.light);
       },
-      child: Icon(isDark == "dark" ? Icons.light_mode : Icons.dark_mode),
+      icon: Icon(isDark == "dark" ? Icons.light_mode : Icons.dark_mode),
     );
   }
 }

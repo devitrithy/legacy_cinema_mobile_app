@@ -1,9 +1,10 @@
+import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
 import 'package:legacy_cinema/controllers/home.controller.dart';
 import 'package:legacy_cinema/utils/components/shared/seat.comp.dart';
 
 class SeatWidget extends StatelessWidget {
-  SeatWidget({
+  const SeatWidget({
     super.key,
     required this.controller,
   });
@@ -13,7 +14,7 @@ class SeatWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 40.0),
+      padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -31,22 +32,41 @@ class SeatWidget extends StatelessWidget {
             ),
           ),
           const SizedBox(
-            height: 50,
+            height: 30,
           ),
-          Container(
-            height: 200,
-            child: InteractiveViewer(
-              child: GridView.builder(
-                itemCount: controller.seatList.length,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 20),
-                itemBuilder: (context, index) {
-                  return SeatComponent(
-                    isAvaialble: !controller.seatList[index].selected,
-                    seat: controller.seatList[index].seatNumber,
-                  );
-                },
-              ),
+          BlurryContainer(
+            elevation: 10,
+            borderRadius: BorderRadius.all(Radius.circular(10)),
+            padding: const EdgeInsets.all(10),
+            color: Colors.black54,
+            height: 250,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const SizedBox(
+                  height: 5,
+                ),
+                Expanded(
+                  child: InteractiveViewer(
+                    child: GridView.builder(
+                      itemCount: controller.seatList.length,
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 20),
+                      itemBuilder: (context, index) {
+                        return SeatComponent(
+                          isAvaialble: !controller.seatList[index].selected,
+                          seat: controller.seatList[index].seatNumber,
+                        );
+                      },
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+              ],
             ),
           ),
         ],

@@ -57,6 +57,7 @@ class HomeView extends StatelessWidget {
                         return ListTileCustome(
                           onTap: () {
                             // Use index here
+                            controller.selectedImage.value = movie.poster!;
                             controller.movieIndex.value = index;
                             controller.fetchLocations();
                             Get.toNamed('/movie_detail');
