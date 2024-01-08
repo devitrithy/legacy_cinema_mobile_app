@@ -7,10 +7,10 @@ import 'package:legacy_cinema/controllers/home.controller.dart';
 import 'package:legacy_cinema/utils/components/seat.comp.dart';
 import 'package:legacy_cinema/utils/components/shared/background.comp.dart';
 import 'package:legacy_cinema/utils/components/shared/logo.comp.dart';
-import 'package:legacy_cinema/utils/components/shared/seat.comp.dart';
 import 'package:legacy_cinema/utils/components/shared/text_icon.comp.dart';
 import 'package:legacy_cinema/utils/components/shared/button_style.comp.dart'
     as button;
+import 'package:legacy_cinema/utils/public_used.dart';
 
 class SelectingSeatView extends StatelessWidget {
   SelectingSeatView({super.key});
@@ -31,29 +31,31 @@ class SelectingSeatView extends StatelessWidget {
           return const Center(child: CircularProgressIndicator());
         } else {
           return Background(
-              child: SizedBox.expand(
-            child: RefreshIndicator(
-              onRefresh: () async =>
-                  controller.fetchSeat(controller.showingId.toString()),
+            child: SizedBox.expand(
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  const SizedBox(
+                    height: 20,
+                  ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10.0),
                     child: Container(
                       height: 100,
                       width: double.infinity,
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           const SizedBox(
                             width: 20,
                           ),
-                          const LogoComponent(),
+                          LogoComponent(isDark: PublicUsed.isDark()),
                           const SizedBox(
                             width: 20,
                           ),
-                          Expanded(
-                              child: Column(
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Row(
                                 children: [
@@ -91,14 +93,47 @@ class SelectingSeatView extends StatelessWidget {
                                       .toString(),
                                   icon: Icons.theaters_outlined),
                             ],
-                          ))
+                          ),
                         ],
                       ),
                     ),
                   ),
-                  SeatWidget(controller: controller),
+                  Expanded(child: SeatWidget(controller: controller)),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                    child: Container(
+                      height: 100,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Select Seat",
+                            style: TextStyle(
+                                color: Colors.red.shade800,
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          Obx(() {
+                            if (controller.selectedSeatList.isNotEmpty) {
+                              return Text(
+                                controller.selectedSeatList
+                                    .toString()
+                                    .substring(
+                                        1,
+                                        controller.selectedSeatList
+                                                .toString()
+                                                .length -
+                                            1),
+                              );
+                            } else {
+                              return const Text("");
+                            }
+                          })
+                        ],
+                      ),
+                    ),
+                  ),
                   Container(
-                    height: 100,
                     child: const Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -107,38 +142,38 @@ class SelectingSeatView extends StatelessWidget {
                       ],
                     ),
                   ),
-                  Expanded(
-                      child: Padding(
+                  Padding(
                     padding: const EdgeInsets.all(20.0),
-                    child: Container(
-                      child: Column(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            const Divider(),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Obx(
-                                  () => Text(
-                                      "Total: \$${5 * controller.selectedSeatList.length}"),
-                                ),
-                                ElevatedButton(
-                                  onPressed: () {
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          const Divider(),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Obx(
+                                () => Text(
+                                    "Total: \$${5 * controller.selectedSeatList.length}"),
+                              ),
+                              ElevatedButton(
+                                onPressed: () {
+                                  if (controller.selectedSeatList.isNotEmpty) {
                                     controller.purchaseTicket();
-                                  },
-                                  style: button.buttonPrimary,
-                                  child: const Text("Pay"),
-                                ),
-                              ],
-                            )
-                          ]),
-                    ),
-                  ))
+                                  }
+                                  return;
+                                },
+                                style: button.buttonPrimary,
+                                child: const Text("Pay"),
+                              ),
+                            ],
+                          )
+                        ]),
+                  ),
                 ],
               ),
             ),
-          ));
+          );
         }
       }),
     );

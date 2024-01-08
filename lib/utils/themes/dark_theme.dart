@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:legacy_cinema/utils/public_used.dart';
 
-var isKhmer = PublicUsed.isKhmer();
 ThemeData darkTheme = ThemeData(
   brightness: Brightness.dark,
   appBarTheme: const AppBarTheme(
@@ -10,7 +9,7 @@ ThemeData darkTheme = ThemeData(
     iconTheme: IconThemeData(color: Colors.white70),
     foregroundColor: Colors.white70,
   ),
-  fontFamily: isKhmer ? "NotoSansKhmer" : "OpenSans",
+  fontFamily: PublicUsed.isKhmer() ? "NotoSansKhmer" : "OpenSans",
   colorScheme: const ColorScheme.dark(
     background: Color.fromRGBO(17, 24, 39, 1),
     primary: Color.fromRGBO(255, 255, 255, 1),

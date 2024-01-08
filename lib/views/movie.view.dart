@@ -20,7 +20,7 @@ class MovieView extends StatelessWidget {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
-        title: const LogoComponent(),
+        title: LogoComponent(isDark: PublicUsed.isDark()),
         centerTitle: true,
       ),
       body: Background(
@@ -44,38 +44,12 @@ class MovieView extends StatelessWidget {
                     const SizedBox(
                       height: 20,
                     ),
-                    const Divider(),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: DropdownButton<String>(
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(10)),
-                        dropdownColor: Colors.black87,
-                        isExpanded: true,
-                        value: controller.selectOptionLocation.value,
-                        items: controller.locationList.map((String value) {
-                          return DropdownMenuItem<String>(
-                            value: value,
-                            child: Text(value),
-                          );
-                        }).toList(),
-                        onChanged: (value) {
-                          //
-                          if (value != null) {
-                            controller.selectOptionLocation.value = value;
-                            debugPrint(value);
-                          }
-                        },
-                      ),
-                    ),
                     const SizedBox(
                       height: 20,
                     ),
                     Obx(() {
                       if (controller.showingTimeList.isNotEmpty) {
+                        print(controller.showingTimeList.length);
                         return Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: controller.showingTimeList.map((element) {
@@ -102,7 +76,6 @@ class MovieView extends StatelessWidget {
                                     ),
                                   ],
                                 ),
-                                const Divider(),
                               ],
                             );
                           }).toList(),

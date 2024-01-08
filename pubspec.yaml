@@ -21,6 +21,9 @@ dependencies:
   zoom_widget: ^2.0.1
   jwt_decoder: ^2.0.1
   url_launcher: ^6.0.13
+  iconsax: ^0.0.8
+  blur_container: ^0.0.2
+  blurrycontainer: ^1.0.2
 
 dev_dependencies:
   flutter_test:

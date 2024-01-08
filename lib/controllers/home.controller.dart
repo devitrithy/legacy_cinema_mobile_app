@@ -15,7 +15,6 @@ class HomeController extends GetxController {
   var showingTime = Showing().obs;
   var showingTimeList = [].obs;
   var showingTimeTicket = ShowingTimeTicketModel().obs;
-  var locationList = ['All Cinemas'].obs;
   var commingSoonList = [].obs;
   var currentSlideshowIndex = 0.obs;
   var showingId = "".obs;
@@ -47,6 +46,7 @@ class HomeController extends GetxController {
   }
 
   void purchaseTicket() async {
+    isLoading.value = true;
     List<TicketModel> items = [
       TicketModel(
         genre: showingTimeTicket.value.movie!.genre,
@@ -64,9 +64,16 @@ class HomeController extends GetxController {
         price: showingTimeTicket.value.movie!.priceId,
       )
     ];
-    var res = await HttpService.purchaseTicket(items);
-    if (await canLaunchUrl(Uri.parse(res.url))) {
-      await launchUrl(Uri.parse(res.url));
+    try {
+      var res = await HttpService.purchaseTicket(items);
+      if (await canLaunchUrl(Uri.parse(res.url))) {
+        selectedSeatList.value = [];
+        await launchUrl(Uri.parse(res.url));
+      }
+    } catch (e) {
+      debugPrint(e.toString());
+    } finally {
+      isLoading.value = false;
     }
   }
 
@@ -74,16 +81,12 @@ class HomeController extends GetxController {
     try {
       isLoading(true);
       showingTimeList.value = [];
-      locationList.value = ['All Cinemas'];
       var movies = await HttpService.fetchShowingTime(
           movieList[movieIndex.value].movieId);
       if (movies == 401) {
         Get.offNamed('/login');
         return;
       } else {
-        for (var location in movies) {
-          locationList.add(location.locationName);
-        }
         showingTimeList.value = movies;
       }
     } finally {

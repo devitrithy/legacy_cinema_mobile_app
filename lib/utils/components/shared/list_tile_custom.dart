@@ -20,23 +20,23 @@ class ListTileCustome extends StatelessWidget {
       onTap: onTap,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-        child: Row(
-          children: [
-            Image.network(
-              "${PublicUsed.apiEndPoint}/thumbnail/${movie.poster!.split('\\')[1]}?w=120&h=200",
-              width: 99,
-            ),
-            const SizedBox(
-              width: 9,
-            ),
-            TitleMovieComponent(movie: movie),
-            Expanded(
-              child: Center(
+        child: Container(
+          child: Row(
+            children: [
+              Image.network(
+                "${PublicUsed.apiEndPoint}/thumbnail/${movie.poster!.split('\\')[1]}?w=120&h=200",
+                width: 99,
+              ),
+              const SizedBox(
+                width: 9,
+              ),
+              Expanded(child: TitleMovieComponent(movie: movie)),
+              Center(
                 child: TextButton(
                     onPressed: onTap, child: const Icon(Icons.info_outline)),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

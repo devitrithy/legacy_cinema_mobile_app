@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:legacy_cinema/utils/components/shared/layout.comp.dart';
 import 'package:legacy_cinema/views/booking_ticket.view.dart';
-import 'package:legacy_cinema/views/home.view.dart';
 import 'package:legacy_cinema/views/login.view.dart';
 import 'package:legacy_cinema/views/movie.view.dart';
 import 'package:legacy_cinema/views/register.view.dart';
@@ -26,13 +26,13 @@ void main() async {
       locale: lang,
       fallbackLocale: const Locale("en", "US"),
       initialRoute: PublicUsed.checkToken() ? '/home' : '/login',
-      routes: {
-        '/home': (p0) => HomeView(),
-        "/login": (p0) => LoginView(),
-        "/register": (p0) => RegisterView(),
-        "/movie_detail": (p0) => MovieView(),
-        "/select_seat": (p0) => SelectingSeatView(),
-      },
+      getPages: [
+        GetPage(name: '/home', page: () => DefaultView()),
+        GetPage(name: "/login", page: () => LoginView()),
+        GetPage(name: "/register", page: () => RegisterView()),
+        GetPage(name: "/movie_detail", page: () => MovieView()),
+        GetPage(name: "/select_seat", page: () => SelectingSeatView()),
+      ],
     ),
   );
 }

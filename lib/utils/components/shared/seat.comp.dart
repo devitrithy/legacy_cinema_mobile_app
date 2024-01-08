@@ -41,20 +41,16 @@ class _SeatComponentState extends State<SeatComponent> {
           color: isSelect
               ? Colors.green
               : widget.isAvaialble
-                  ? Colors.grey.shade500
+                  ? Colors.grey.shade700
                   : Colors.red,
           Icons.chair,
-          size: 18,
+          size: 15,
         ),
         Text(
           widget.seat,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 5,
-            color: isSelect
-                ? Colors.white
-                : widget.isAvaialble
-                    ? Colors.black
-                    : Colors.white,
+            color: Colors.white,
           ),
         ),
       ]),

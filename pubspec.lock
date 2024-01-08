@@ -9,6 +9,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.11.0"
+  blur_container:
+    dependency: "direct main"
+    description:
+      name: blur_container
+      sha256: "8c8120a5e297f5f5f77a1e894b1654e441aa1e0999757d00fae9656fce80e000"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.2"
+  blurrycontainer:
+    dependency: "direct main"
+    description:
+      name: blurrycontainer
+      sha256: "6c76c9ab0c5a918f7946667152d1a282b252976de9bd6a58f157a1dd1eb9aed0"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.2"
   boolean_selector:
     dependency: transitive
     description:
@@ -184,6 +200,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.0.2"
+  iconsax:
+    dependency: "direct main"
+    description:
+      name: iconsax
+      sha256: fb0144c61f41f3f8a385fadc27783ea9f5359670be885ed7f35cef32565d5228
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.8"
   image_picker:
     dependency: "direct main"
     description:

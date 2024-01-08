@@ -4,6 +4,7 @@ class Language extends Translations {
   @override
   Map<String, Map<String, String>> get keys => {
         "en_US": {
+          "now_showing": "Now Showing",
           "movie": "Movies",
           "ticket": "Ticket",
           "history": "Booking History",
@@ -14,7 +15,7 @@ class Language extends Translations {
           "trailer": "New Trailer",
           "info": "Info",
           "booking": "Booking",
-          "cinema": "Cinema",
+          "cinema": "Cinemas",
           "login": "Login",
           "register": "Register",
           "logout": "Logout",

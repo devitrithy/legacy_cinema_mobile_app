@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:legacy_cinema/utils/public_used.dart';
 
 ThemeData lightTheme = ThemeData(
   brightness: Brightness.light,
+  fontFamily: PublicUsed.isKhmer() ? "NotoSansKhmer" : "OpenSans",
   appBarTheme: const AppBarTheme(
       backgroundColor: Colors.transparent,
       elevation: 0,

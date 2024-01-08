@@ -15,7 +15,6 @@ class TitleMovieComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 160,
-      width: 250,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -40,9 +39,6 @@ class TitleMovieComponent extends StatelessWidget {
                 icon: Icons.timer,
               ),
             ],
-          ),
-          const SizedBox(
-            height: 10,
           ),
           const TextIcon(icon: Icons.attach_money_rounded, text: "5"),
         ],

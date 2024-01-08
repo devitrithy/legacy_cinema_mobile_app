@@ -9,7 +9,6 @@ import 'package:legacy_cinema/models/session.model.dart';
 import 'package:legacy_cinema/models/showing_time_for_ticket.model.dart';
 import 'package:legacy_cinema/models/slideshow.model.dart';
 import 'package:legacy_cinema/models/ticket.model.dart';
-import 'package:legacy_cinema/models/user_jwt.model.dart';
 import 'package:legacy_cinema/utils/public_used.dart';
 
 class HttpService {
