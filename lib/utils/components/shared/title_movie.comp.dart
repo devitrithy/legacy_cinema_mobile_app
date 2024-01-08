@@ -15,7 +15,7 @@ class TitleMovieComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 160,
-      width: 290,
+      width: 250,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,

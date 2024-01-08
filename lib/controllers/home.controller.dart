@@ -1,5 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:legacy_cinema/models/showing_time.model.dart';
+import 'package:legacy_cinema/models/showing_time_for_ticket.model.dart';
 import 'package:legacy_cinema/services/home.service.dart';
 import 'package:legacy_cinema/utils/public_used.dart';
 
@@ -7,7 +9,10 @@ class HomeController extends GetxController {
   var isLoading = true.obs;
   var movieList = [].obs;
   var seatList = [].obs;
+  var selectedSeatList = [].obs;
+  var showingTime = Showing().obs;
   var showingTimeList = [].obs;
+  var showingTimeTicket = ShowingTimeTicketModel().obs;
   var locationList = ['All Cinemas'].obs;
   var commingSoonList = [].obs;
   var currentSlideshowIndex = 0.obs;
@@ -21,23 +26,39 @@ class HomeController extends GetxController {
     super.onInit();
   }
 
-  void fetchSeat() async {
+  void fetchSeat(String id) async {
     try {
       isLoading(true);
-      seatList.value = [];
-      var seats = await HttpService.fetchSeat(showingId.value);
+      var seats = await HttpService.fetchSeat(id);
+      var showingTimes = await HttpService.fetchShowingTimeTicket(id);
       if (seats == 401) {
         Get.offNamed('/login');
         return;
       } else {
-        for (var location in seats) {
-          locationList.add(location.locationName);
-        }
-        showingTimeList.value = seats;
+        seatList.value = seats;
+        showingTimeTicket.value = showingTimes[0];
       }
     } finally {
       isLoading(false);
     }
+  }
+
+  void purchaseTicket() async {
+    var items = [
+      {
+        "genre": showingTimeTicket.value.movie!.genre,
+        "origin": "https://legacycinema.vercel.app",
+        "day": DateTime.now(),
+        "uid": PublicUsed.getUserId()["user_id"],
+        "mid": showingTimeTicket.value.movieId,
+        "seats": seatList.toString(),
+        "sid": showingTimeTicket.value.showingId,
+        "id": showingTimeTicket.value.movie!.priceId,
+        "title": showingTimeTicket.value.movie!.title,
+        "qty": seatList.length,
+        "price": showingTimeTicket.value.movie!.priceId,
+      },
+    ];
   }
 
   void fetchLocations() async {

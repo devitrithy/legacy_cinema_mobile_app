@@ -8,23 +8,32 @@ Widget buildHallWidget(Hall hall) {
   final HomeController controller = Get.put(HomeController());
   return Padding(
     padding: const EdgeInsets.symmetric(horizontal: 20.0),
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+    child: Row(
       children: [
-        Text("${hall.hallName!}"),
-        const SizedBox(height: 10),
+        const SizedBox(
+          width: 65,
+        ),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: hall.showing!.map<Widget>((showing) {
-            if (showing.movieId ==
-                    controller
-                        .movieList[controller.movieIndex.toInt()].movieId &&
-                showing.showingDate!.isAfter(DateTime.now())) {
-              return buildShowingWidget(showing);
-            } else {
-              return const SizedBox();
-            }
-          }).toList(),
+          children: [
+            Text(hall.hallName!.toUpperCase()),
+            const SizedBox(height: 10),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: hall.showing!.asMap().entries.map<Widget>((entry) {
+                final showing = entry.value;
+
+                if (showing.movieId ==
+                        controller
+                            .movieList[controller.movieIndex.toInt()].movieId &&
+                    showing.showingDate!.isAfter(DateTime.now())) {
+                  return buildShowingWidget(showing);
+                } else {
+                  return const SizedBox();
+                }
+              }).toList(),
+            ),
+          ],
         ),
       ],
     ),

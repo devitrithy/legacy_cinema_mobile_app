@@ -11,7 +11,7 @@ class SeatModel {
     id = json['id'];
     row = json['row'];
     number = json['number'];
-    selected = bool.parse(json['selected']);
+    selected = json['selected'];
     seatNumber = json['seatNumber'];
   }
 }

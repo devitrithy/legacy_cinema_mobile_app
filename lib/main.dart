@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:legacy_cinema/views/booking_ticket.view.dart';
 import 'package:legacy_cinema/views/home.view.dart';
 import 'package:legacy_cinema/views/login.view.dart';
 import 'package:legacy_cinema/views/movie.view.dart';
@@ -30,6 +31,7 @@ void main() async {
         "/login": (p0) => LoginView(),
         "/register": (p0) => RegisterView(),
         "/movie_detail": (p0) => MovieView(),
+        "/select_seat": (p0) => SelectingSeatView(),
       },
     ),
   );

@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:legacy_cinema/models/location.model.dart';
 import 'package:legacy_cinema/models/movie.model.dart';
+import 'package:legacy_cinema/models/seat.model.dart';
+import 'package:legacy_cinema/models/showing_time_for_ticket.model.dart';
 import 'package:legacy_cinema/models/slideshow.model.dart';
 import 'package:legacy_cinema/utils/public_used.dart';
 
@@ -32,13 +34,25 @@ class HttpService {
     return res.statusCode;
   }
 
+  static Future<dynamic> fetchShowingTimeTicket(String id) async {
+    String url = "${PublicUsed.apiEndPoint}/showing/$id";
+    var res = await http.get(Uri.parse(url),
+        headers: {'Authorization': 'Bearer ${PublicUsed.getToken()}'});
+    if (res.statusCode == 200) {
+      return List<ShowingTimeTicketModel>.from(json
+          .decode(res.body)['showingtime']
+          .map((p) => ShowingTimeTicketModel.fromJson(p)));
+    }
+    return res.statusCode;
+  }
+
   static Future<dynamic> fetchSeat(String id) async {
     String url = "${PublicUsed.apiEndPoint}/ticket/$id";
     var res = await http.get(Uri.parse(url),
         headers: {'Authorization': 'Bearer ${PublicUsed.getToken()}'});
     if (res.statusCode == 200) {
-      return List<MovieModel>.from(
-          json.decode(res.body)['movies'].map((p) => MovieModel.fromJson(p)));
+      return List<SeatModel>.from(
+          json.decode(res.body).map((p) => SeatModel.fromJson(p)));
     }
     return res.statusCode;
   }
