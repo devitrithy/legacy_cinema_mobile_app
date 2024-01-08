@@ -1,7 +1,9 @@
 import 'package:flutter/widgets.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:get/get.dart';
 import 'package:legacy_cinema/models/showing_time.model.dart';
 import 'package:legacy_cinema/models/showing_time_for_ticket.model.dart';
+import 'package:legacy_cinema/models/ticket.model.dart';
 import 'package:legacy_cinema/services/home.service.dart';
 import 'package:legacy_cinema/utils/public_used.dart';
 
@@ -29,6 +31,7 @@ class HomeController extends GetxController {
   void fetchSeat(String id) async {
     try {
       isLoading(true);
+      selectedSeatList.value = [];
       var seats = await HttpService.fetchSeat(id);
       var showingTimes = await HttpService.fetchShowingTimeTicket(id);
       if (seats == 401) {
@@ -44,21 +47,27 @@ class HomeController extends GetxController {
   }
 
   void purchaseTicket() async {
-    var items = [
-      {
-        "genre": showingTimeTicket.value.movie!.genre,
-        "origin": "https://legacycinema.vercel.app",
-        "day": DateTime.now(),
-        "uid": PublicUsed.getUserId()["user_id"],
-        "mid": showingTimeTicket.value.movieId,
-        "seats": seatList.toString(),
-        "sid": showingTimeTicket.value.showingId,
-        "id": showingTimeTicket.value.movie!.priceId,
-        "title": showingTimeTicket.value.movie!.title,
-        "qty": seatList.length,
-        "price": showingTimeTicket.value.movie!.priceId,
-      },
+    List<TicketModel> items = [
+      TicketModel(
+        genre: showingTimeTicket.value.movie!.genre,
+        origin: "https://legacycinema.vercel.app",
+        day: DateTime.now().day,
+        uid: PublicUsed.getUserId()["user_id"],
+        mid: showingTimeTicket.value.movieId,
+        seats: selectedSeatList
+            .toString()
+            .substring(1, selectedSeatList.toString().length - 1),
+        sid: showingTimeTicket.value.showingId,
+        id: showingTimeTicket.value.movie!.priceId,
+        title: showingTimeTicket.value.movie!.title,
+        qty: selectedSeatList.length,
+        price: showingTimeTicket.value.movie!.priceId,
+      )
     ];
+    var res = await HttpService.purchaseTicket(items);
+    if (await canLaunchUrl(Uri.parse(res.url))) {
+      await launchUrl(Uri.parse(res.url));
+    }
   }
 
   void fetchLocations() async {

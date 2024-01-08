@@ -20,6 +20,7 @@ dependencies:
   date_time_format: ^2.0.1
   zoom_widget: ^2.0.1
   jwt_decoder: ^2.0.1
+  url_launcher: ^6.0.13
 
 dev_dependencies:
   flutter_test:

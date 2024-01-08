@@ -29,25 +29,7 @@ class ShowingTimeTicketModel {
     createAt = json['create_at'];
     updateAt = json['update_at'];
     movie = json['movie'] != null ? Movie.fromJson(json['movie']) : null;
-    hall = json['hall'] != null ? Hall.fromJson(json['hall']) : null;
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = {};
-    data['showing_id'] = showingId;
-    data['showing_date'] = showingDate;
-    data['movie_id'] = movieId;
-    data['hall_id'] = hallId;
-    data['price'] = price;
-    data['create_at'] = createAt;
-    data['update_at'] = updateAt;
-    if (movie != null) {
-      data['movie'] = movie!.toJson();
-    }
-    if (hall != null) {
-      data['hall'] = hall!.toJson();
-    }
-    return data;
+    hall = (json['hall'] != null ? Hall.fromJson(json['hall']) : null)!;
   }
 }
 
@@ -93,23 +75,6 @@ class Movie {
     updateAt = json['update_at'];
     priceId = json['price_id'];
   }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = {};
-    data['movie_id'] = movieId;
-    data['title'] = title;
-    data['description'] = description;
-    data['time'] = time;
-    data['poster'] = poster;
-    data['trailer'] = trailer;
-    data['genre'] = genre;
-    data['releaseDate'] = releaseDate;
-    data['import_cost'] = importCost;
-    data['create_at'] = createAt;
-    data['update_at'] = updateAt;
-    data['price_id'] = priceId;
-    return data;
-  }
 }
 
 class Hall {
@@ -136,19 +101,6 @@ class Hall {
     updateAt = json['update_at'];
     location =
         json['location'] != null ? Location.fromJson(json['location']) : null;
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = {};
-    data['hall_id'] = hallId;
-    data['hall_name'] = hallName;
-    data['location_id'] = locationId;
-    data['create_at'] = createAt;
-    data['update_at'] = updateAt;
-    if (location != null) {
-      data['location'] = location!.toJson();
-    }
-    return data;
   }
 }
 
@@ -178,17 +130,5 @@ class Location {
     createAt = json['create_at'];
     updateAt = json['update_at'];
     map = json['map'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = {};
-    data['location_id'] = locationId;
-    data['location_name'] = locationName;
-    data['address'] = address;
-    data['picture'] = picture;
-    data['create_at'] = createAt;
-    data['update_at'] = updateAt;
-    data['map'] = map;
-    return data;
   }
 }
