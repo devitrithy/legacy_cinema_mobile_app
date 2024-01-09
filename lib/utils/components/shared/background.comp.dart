@@ -10,9 +10,11 @@ class Background extends StatelessWidget {
   Background({
     Key? key,
     required this.child,
+    this.moviePosterBg = true,
   }) : super(key: key);
   final Widget child;
   final HomeController controller = Get.put(HomeController());
+  final bool moviePosterBg;
 
   @override
   Widget build(BuildContext context) {

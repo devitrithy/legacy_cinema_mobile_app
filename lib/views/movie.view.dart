@@ -5,7 +5,6 @@ import 'package:iconsax/iconsax.dart';
 import 'package:legacy_cinema/controllers/home.controller.dart';
 import 'package:legacy_cinema/utils/components/hall_comp.dart';
 import 'package:legacy_cinema/utils/components/shared/background.comp.dart';
-import 'package:legacy_cinema/utils/components/shared/logo.comp.dart';
 import 'package:legacy_cinema/utils/components/shared/title_movie.comp.dart';
 import 'package:legacy_cinema/utils/components/trailer.comp.dart';
 import 'package:legacy_cinema/utils/public_used.dart';
@@ -47,8 +46,7 @@ class MovieView extends StatelessWidget {
                           height: 20,
                         ),
                         Obx(() {
-                          if (controller.showingTimeList.isNotEmpty) {
-                            print(controller.showingTimeList.length);
+                          if (controller.showingTimeList.length != 0) {
                             return Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children:
@@ -81,10 +79,8 @@ class MovieView extends StatelessWidget {
                               }).toList(),
                             );
                           } else {
-                            return const Expanded(
-                              child: Center(
-                                child: Text("No Showing Time Available"),
-                              ),
+                            return const Center(
+                              child: Text("No Showing Time Available"),
                             );
                           }
                         }),

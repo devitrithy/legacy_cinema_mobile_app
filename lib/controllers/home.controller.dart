@@ -69,8 +69,10 @@ class HomeController extends GetxController {
     try {
       var res = await HttpService.purchaseTicket(items);
       if (await canLaunchUrl(Uri.parse(res.url))) {
-        selectedSeatList.value = [];
-        await launchUrl(Uri.parse(res.url));
+        bool launchUrls = await launchUrl(Uri.parse(res.url));
+        if (launchUrls) {
+          selectedSeatList.value = [];
+        }
       }
     } catch (e) {
       debugPrint(e.toString());

@@ -1,5 +1,6 @@
 import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:legacy_cinema/controllers/home.controller.dart';
 import 'package:legacy_cinema/utils/components/shared/seat.comp.dart';
 
@@ -19,27 +20,12 @@ class SeatWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 20),
-            child: Container(
-              width: 500,
-              height: 40,
-              decoration: BoxDecoration(
-                border: Border.all(
-                    strokeAlign: 1, color: Theme.of(context).colorScheme.error),
-              ),
-              child: const Center(child: Text("Screen")),
-            ),
-          ),
-          const SizedBox(
-            height: 30,
-          ),
           BlurryContainer(
             elevation: 10,
             borderRadius: BorderRadius.all(Radius.circular(10)),
             padding: const EdgeInsets.all(10),
             color: Colors.black54,
-            height: 250,
+            height: 320,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -47,7 +33,8 @@ class SeatWidget extends StatelessWidget {
                 const SizedBox(
                   height: 5,
                 ),
-                Expanded(
+                Container(
+                  height: 200,
                   child: InteractiveViewer(
                     child: GridView.builder(
                       itemCount: controller.seatList.length,
@@ -65,6 +52,23 @@ class SeatWidget extends StatelessWidget {
                 ),
                 const SizedBox(
                   height: 5,
+                ),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 8.0, horizontal: 20),
+                  child: Container(
+                    width: 500,
+                    height: 40,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                          strokeAlign: 1,
+                          color: Theme.of(context).colorScheme.error),
+                    ),
+                    child: Center(child: Text("screen".tr)),
+                  ),
+                ),
+                const SizedBox(
+                  height: 30,
                 ),
               ],
             ),

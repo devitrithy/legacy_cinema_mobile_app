@@ -34,7 +34,7 @@ class _BottomNavigationBarComponentState
         NavigationDestination(
             icon: const Icon(Iconsax.ticket), label: "history".tr),
         NavigationDestination(
-            icon: const Icon(Iconsax.settings), label: "setting".tr),
+            icon: const Icon(Iconsax.setting4), label: "setting".tr),
       ],
     );
   }

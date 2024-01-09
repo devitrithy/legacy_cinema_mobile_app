@@ -96,7 +96,11 @@ class SelectingSeatView extends StatelessWidget {
                           ),
                         ),
                       ),
-                      Expanded(child: SeatWidget(controller: controller)),
+                      Expanded(
+                          child: RefreshIndicator(
+                              onRefresh: () async => controller
+                                  .fetchSeat(controller.showingId.toString()),
+                              child: SeatWidget(controller: controller))),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 20.0),
                         child: Container(
@@ -105,7 +109,7 @@ class SelectingSeatView extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                "Select Seat".tr.toUpperCase(),
+                                "select_seat".tr.toUpperCase(),
                                 style: TextStyle(
                                     color: Colors.red.shade300,
                                     fontSize: 18,
@@ -124,9 +128,13 @@ class SelectingSeatView extends StatelessWidget {
                                                 1),
                                   );
                                 } else {
-                                  return const Text("");
+                                  return const Text(
+                                    "-----",
+                                    style: TextStyle(color: Colors.red),
+                                  );
                                 }
-                              })
+                              }),
+                              const Divider(),
                             ],
                           ),
                         ),
@@ -152,7 +160,7 @@ class SelectingSeatView extends StatelessWidget {
                               children: [
                                 Obx(
                                   () => Text(
-                                      "Total: \$${5 * controller.selectedSeatList.length}"),
+                                      "${'total'.tr.toUpperCase()}: \$${5 * controller.selectedSeatList.length}"),
                                 ),
                                 ElevatedButton(
                                   onPressed: () {
@@ -163,7 +171,7 @@ class SelectingSeatView extends StatelessWidget {
                                     return;
                                   },
                                   style: button.buttonPrimary,
-                                  child: const Text("Pay"),
+                                  child: Text("pay".tr),
                                 ),
                               ],
                             )
