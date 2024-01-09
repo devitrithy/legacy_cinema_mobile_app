@@ -8,11 +8,16 @@ import 'package:legacy_cinema/utils/components/shared/language_switch.dart';
 import 'package:legacy_cinema/utils/components/shared/logo.comp.dart';
 import 'package:legacy_cinema/utils/components/shared/switch_mode.dart';
 import 'package:legacy_cinema/utils/public_used.dart';
+import 'package:legacy_cinema/views/cinema.view.dart';
+import 'package:legacy_cinema/views/history.view.dart';
 import 'package:legacy_cinema/views/home.view.dart';
+import 'package:legacy_cinema/views/setting.view.dart';
 
 class DefaultView extends StatelessWidget {
   DefaultView({super.key});
   final HomeController controller = Get.put(HomeController());
+  final BottomNavigationBarController viewController =
+      Get.put(BottomNavigationBarController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,7 +25,12 @@ class DefaultView extends StatelessWidget {
       body: SafeArea(
         child: Stack(
           children: [
-            HomeView(),
+            Obx(() {
+              if (viewController.currentIndex.value == 0) return HomeView();
+              if (viewController.currentIndex.value == 1) return CinemaView();
+              if (viewController.currentIndex.value == 2) return HistoryView();
+              return SettingView();
+            }),
             Positioned(
               bottom: 0,
               left: 0,
@@ -33,9 +43,13 @@ class DefaultView extends StatelessWidget {
                           15), // Adjust sigmaX and sigmaY for blur intensity
                   child: Container(
                     height: 80,
-                    decoration: const BoxDecoration(
-                      border: Border(
-                        top: BorderSide(color: Colors.grey, width: 0.1),
+                    decoration: BoxDecoration(
+                      color: Theme.of(context)
+                          .colorScheme
+                          .background
+                          .withOpacity(0.5),
+                      border: const Border(
+                        top: BorderSide(color: Colors.grey, width: 0.4),
                       ),
                     ),
                     child: const BottomNavigationBarComponent(),
@@ -55,7 +69,10 @@ class DefaultView extends StatelessWidget {
                           15), // Adjust sigmaX and sigmaY for blur intensity
                   child: Container(
                     height: 80, // Adjust height for the AppBar-like widget
-                    color: Colors.transparent, // Adjust color if needed
+                    color: Theme.of(context)
+                        .colorScheme
+                        .background
+                        .withOpacity(0.5),
                     child: Padding(
                       padding: const EdgeInsets.only(top: 10.0),
                       child: Padding(

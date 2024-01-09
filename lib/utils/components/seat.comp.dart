@@ -45,6 +45,7 @@ class SeatWidget extends StatelessWidget {
                         return SeatComponent(
                           isAvaialble: !controller.seatList[index].selected,
                           seat: controller.seatList[index].seatNumber,
+                          controller: controller,
                         );
                       },
                     ),
@@ -64,7 +65,12 @@ class SeatWidget extends StatelessWidget {
                           strokeAlign: 1,
                           color: Theme.of(context).colorScheme.error),
                     ),
-                    child: Center(child: Text("screen".tr)),
+                    child: Center(
+                      child: Text(
+                        "screen".tr,
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
                   ),
                 ),
                 const SizedBox(

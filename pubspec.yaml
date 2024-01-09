@@ -24,6 +24,10 @@ dependencies:
   iconsax: ^0.0.8
   blur_container: ^0.0.2
   blurrycontainer: ^1.0.2
+  connectivity_plus: ^4.0.1
+  cached_network_image: ^3.3.1
+  flutter_native_splash: ^2.3.7
+  video_player: ^2.8.2
 
 dev_dependencies:
   flutter_test:

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:legacy_cinema/controllers/dependency_injection.dart';
 import 'package:legacy_cinema/utils/components/shared/layout.comp.dart';
 import 'package:legacy_cinema/views/booking_ticket.view.dart';
 import 'package:legacy_cinema/views/login.view.dart';
@@ -13,9 +15,12 @@ import 'package:legacy_cinema/utils/public_used.dart';
 
 void main() async {
   await GetStorage.init();
+
   bool isKhmer = PublicUsed.isKhmer();
   bool isDark = PublicUsed.isDark();
   Locale lang = isKhmer ? const Locale("kh", "KH") : const Locale("en", "US");
+  DependencyInjection.init();
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   runApp(
     GetMaterialApp(
       debugShowCheckedModeBanner: false,

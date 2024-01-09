@@ -5,9 +5,16 @@ class Language extends Translations {
   Map<String, Map<String, String>> get keys => {
         "en_US": {
           "now_showing": "Now Showing",
+          "Action": "Action",
+          "Drama": "Drama",
+          "Animation": "Animation",
+          "Romance": "Romance",
+          "Horror": "Horror",
+          "Documentary": "Documentary",
           "movie": "Movies",
+          "No Showing Time Available": "No Showing Time Available",
           "ticket": "Ticket",
-          "history": "Booking History",
+          "history": "History",
           "account": "Account",
           "khmer": "Khmer",
           "english": "English",
@@ -45,7 +52,7 @@ class Language extends Translations {
           "password_is_required": "Password is Required",
         },
         "kh_KH": {
-          "pay": "បង់លុយ",
+          "pay": "ទិញ",
           "total": "សរុប",
           "screen": "អេក្រង់",
           "select_seat": "ជ្រើស​រើស​កៅ​អី​",
@@ -85,6 +92,13 @@ class Language extends Translations {
               "ឈ្មោះ​អ្នក​ប្រើប្រាស់​គួរ​តែ​មាន​​៣អក្សរឡើង",
           "password_is_required": "ទៀមទារពាក្យសម្ងាត់",
           "now_showing_movie": "ឥឡូវនេះកំពុងបញ្ចាំងភាពយន្ត",
+          "No Showing Time Available": "មិនមានម៉ោងចាក់បញ្ចាំង",
+          "Action": "សកម្មភាព",
+          "Drama": "កាលៈទេសៈ",
+          "Animation": "គំនូរជីវចល",
+          "Romance": "មនោសញ្ចេតនា",
+          "Horror": "ភ័យរន្ធត់",
+          "Documentary": "ភាពយន្តឯកសារ",
         }
       };
 }

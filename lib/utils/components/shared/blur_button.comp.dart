@@ -2,6 +2,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:legacy_cinema/utils/public_used.dart';
 
 class BlurButton extends StatelessWidget {
   final VoidCallback onPressed;
@@ -27,7 +28,11 @@ class BlurButton extends StatelessWidget {
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               decoration: BoxDecoration(
-                border: Border.all(color: Colors.grey, width: 1),
+                border: Border.all(
+                    color: PublicUsed.isDark()
+                        ? Color.fromARGB(255, 19, 19, 19)
+                        : Colors.white,
+                    width: 1),
                 borderRadius: BorderRadius.circular(20),
               ),
               child: child,

@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import 'package:legacy_cinema/models/movie.model.dart';
@@ -23,9 +24,13 @@ class ListTileCustome extends StatelessWidget {
         child: Container(
           child: Row(
             children: [
-              Image.network(
-                "${PublicUsed.apiEndPoint}/thumbnail/${movie.poster!.split('\\')[1]}?w=120&h=200",
+              CachedNetworkImage(
+                imageUrl:
+                    "${PublicUsed.apiEndPoint}/thumbnail/${movie.poster!.split('\\')[1]}?w=120&h=200",
                 width: 99,
+                placeholder: (context, url) {
+                  return const Center(child: CircularProgressIndicator());
+                },
               ),
               const SizedBox(
                 width: 9,

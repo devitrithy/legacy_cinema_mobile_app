@@ -37,7 +37,6 @@ class PublicUsed {
   static Map<String, dynamic> getUserId() {
     Map<String, dynamic> decodedToken =
         JwtDecoder.decode(getToken().toString());
-    print(decodedToken['user_id']);
     return decodedToken;
   }
 }

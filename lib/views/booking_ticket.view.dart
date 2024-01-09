@@ -43,11 +43,8 @@ class SelectingSeatView extends StatelessWidget {
                           height: 100,
                           width: double.infinity,
                           child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              const SizedBox(
-                                width: 20,
-                              ),
                               LogoComponent(isDark: PublicUsed.isDark()),
                               const SizedBox(
                                 width: 20,
@@ -111,7 +108,8 @@ class SelectingSeatView extends StatelessWidget {
                               Text(
                                 "select_seat".tr.toUpperCase(),
                                 style: TextStyle(
-                                    color: Colors.red.shade300,
+                                    color:
+                                        Theme.of(context).colorScheme.primary,
                                     fontSize: 18,
                                     fontWeight: FontWeight.bold),
                               ),
@@ -134,10 +132,14 @@ class SelectingSeatView extends StatelessWidget {
                                   );
                                 }
                               }),
-                              const Divider(),
                             ],
                           ),
                         ),
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 20.0, vertical: 10),
+                        child: Divider(),
                       ),
                       Container(
                         child: const Row(
@@ -149,7 +151,8 @@ class SelectingSeatView extends StatelessWidget {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.all(20.0),
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 10.0, horizontal: 20),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.end,
                           crossAxisAlignment: CrossAxisAlignment.end,

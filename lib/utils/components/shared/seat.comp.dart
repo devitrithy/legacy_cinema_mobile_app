@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:legacy_cinema/controllers/home.controller.dart';
 
 class SeatComponent extends StatefulWidget {
@@ -8,9 +7,11 @@ class SeatComponent extends StatefulWidget {
     Key? key,
     this.isAvaialble = true,
     required this.seat,
+    required this.controller,
   }) : super(key: key);
   final bool isAvaialble;
   final String seat;
+  final HomeController controller;
 
   @override
   State<SeatComponent> createState() => _SeatComponentState();
@@ -18,7 +19,6 @@ class SeatComponent extends StatefulWidget {
 
 class _SeatComponentState extends State<SeatComponent> {
   bool isSelect = false;
-  final HomeController controller = Get.put(HomeController());
 
   @override
   Widget build(BuildContext context) {
@@ -32,9 +32,9 @@ class _SeatComponentState extends State<SeatComponent> {
           });
         }
         if (!isSelect) {
-          controller.selectedSeatList.remove(widget.seat);
+          widget.controller.selectedSeatList.remove(widget.seat);
         } else {
-          controller.selectedSeatList.add(widget.seat);
+          widget.controller.selectedSeatList.add(widget.seat);
         }
       },
       child: Stack(alignment: Alignment.center, children: [
@@ -45,13 +45,13 @@ class _SeatComponentState extends State<SeatComponent> {
                   ? Color.fromARGB(255, 75, 75, 75)
                   : Colors.red,
           Icons.chair,
-          size: 20,
+          size: 15,
         ),
         Text(
           widget.seat,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 5,
-            color: isSelect ? Colors.black : Colors.white,
+            color: Colors.white,
           ),
         ),
       ]),

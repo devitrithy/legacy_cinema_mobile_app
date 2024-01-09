@@ -45,8 +45,10 @@ class Background extends StatelessWidget {
             filter: ImageFilter.blur(
                 sigmaX: 50, sigmaY: 50), // Adjust blur intensity
             child: Container(
-              color: Colors.black
-                  .withOpacity(0.3), // Adjust overlay color and opacity
+              color: !PublicUsed.isDark()
+                  ? Colors.black.withOpacity(0.6)
+                  : Colors.white
+                      .withOpacity(0.2), // Adjust overlay color and opacity
               child: SafeArea(child: child),
             ),
           ),

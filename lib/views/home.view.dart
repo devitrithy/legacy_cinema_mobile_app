@@ -17,7 +17,6 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Background(
-      moviePosterBg: false,
       child: RefreshIndicator(
         onRefresh: () async {
           controller.fetchData();

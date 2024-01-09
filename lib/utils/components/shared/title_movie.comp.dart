@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:date_time_format/date_time_format.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:legacy_cinema/models/movie.model.dart';
 import 'package:legacy_cinema/utils/components/shared/text_icon.comp.dart';
 
@@ -29,13 +30,14 @@ class TitleMovieComponent extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              TextIcon(icon: Icons.movie_filter, text: movie.genre.toString()),
+              TextIcon(
+                  icon: Icons.movie_filter, text: movie.genre.toString().tr),
               TextIcon(
                   icon: Icons.date_range,
                   text: DateTimeFormat.format(movie.releaseDate!,
                       format: "D M Y")),
               TextIcon(
-                text: "${movie.time} Minutes",
+                text: "${movie.time} ${'minute'.tr}",
                 icon: Icons.timer,
               ),
             ],
