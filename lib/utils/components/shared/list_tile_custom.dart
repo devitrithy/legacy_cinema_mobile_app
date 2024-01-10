@@ -25,6 +25,7 @@ class ListTileCustome extends StatelessWidget {
           child: Row(
             children: [
               CachedNetworkImage(
+                height: 160,
                 imageUrl:
                     "${PublicUsed.apiEndPoint}/thumbnail/${movie.poster!.split('\\')[1]}?w=120&h=200",
                 width: 99,

@@ -1,3 +1,5 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:get/get.dart';
@@ -21,12 +23,21 @@ class HomeController extends GetxController {
   var showingId = "".obs;
   var movieIndex = 0.obs;
   var selectOptionLocation = 'All Cinemas'.obs;
+  var listOfDay = [].obs;
   List<Widget> slideshowList = [];
 
   @override
   void onInit() {
     fetchData();
+    generateDay();
     super.onInit();
+  }
+
+  generateDay() {
+    var today = DateTime.now().day;
+    for (var i = 1; i <= 3; i++) {
+      listOfDay.add(today + i);
+    }
   }
 
   void fetchSeat(String id) async {
@@ -52,7 +63,7 @@ class HomeController extends GetxController {
     List<TicketModel> items = [
       TicketModel(
         genre: showingTimeTicket.value.movie!.genre,
-        origin: "https://legacycinema.vercel.app",
+        origin: PublicUsed.global,
         day: DateTime.now().day,
         uid: PublicUsed.getUserId()["user_id"],
         mid: showingTimeTicket.value.movieId,
@@ -111,8 +122,14 @@ class HomeController extends GetxController {
         return;
       } else {
         for (var element in slideshows) {
-          slideshowList.add(Image.network(
-              "${PublicUsed.apiEndPoint}/thumbnail/${element.poster!.split('\\')[1]}?w=400&h=100"));
+          slideshowList.add(
+            CachedNetworkImage(
+              imageUrl:
+                  "${PublicUsed.apiEndPoint}/thumbnail/${element.poster!.split('\\')[1]}?w=400&h=100",
+              placeholder: (context, url) =>
+                  const Center(child: CircularProgressIndicator()),
+            ),
+          );
         }
         for (var i = 0; i < movies.length; i++) {
           if (movies[i].releaseDate!.isBefore(DateTime.now()) == true) {

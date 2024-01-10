@@ -43,17 +43,20 @@ class MovieView extends StatelessWidget {
                             padding:
                                 const EdgeInsets.symmetric(horizontal: 20.0),
                             child: TitleMovieComponent(
-                                movie: controller
-                                    .movieList[controller.movieIndex.toInt()]),
+                              movie: controller
+                                  .movieList[controller.movieIndex.toInt()],
+                            ),
                           ),
-                          const SizedBox(
-                            height: 20,
+                          SizedBox(
+                            height: 40,
                           ),
-                          const SizedBox(
-                            height: 20,
+                          Row(
+                            children: [
+                              //
+                            ],
                           ),
                           Obx(() {
-                            if (controller.showingTimeList.length != 0) {
+                            if (controller.showingTimeList.isNotEmpty) {
                               return Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children:
@@ -88,13 +91,25 @@ class MovieView extends StatelessWidget {
                             } else {
                               return Container(
                                 height: 300,
-                                child: Center(
-                                  child: Text(
-                                    "No Showing Time Available".tr,
-                                    style: const TextStyle(
-                                      fontSize: 20,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Image.asset(
+                                      'assets/image/no_showing_time_2.png',
+                                      height: 200,
                                     ),
-                                  ),
+                                    Center(
+                                      child: Text(
+                                        "No Showing Time Available"
+                                            .tr
+                                            .toUpperCase(),
+                                        style: const TextStyle(
+                                          fontSize: 20,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               );
                             }
@@ -110,6 +125,7 @@ class MovieView extends StatelessWidget {
                       },
                       icon: const Icon(
                         Iconsax.arrow_circle_left,
+                        color: Colors.white,
                       ),
                     ),
                   ),

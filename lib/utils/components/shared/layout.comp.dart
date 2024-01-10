@@ -28,8 +28,10 @@ class DefaultView extends StatelessWidget {
             Obx(() {
               if (viewController.currentIndex.value == 0) return HomeView();
               if (viewController.currentIndex.value == 1) return CinemaView();
-              if (viewController.currentIndex.value == 2) return HistoryView();
-              return SettingView();
+              if (viewController.currentIndex.value == 2) {
+                return const HistoryView();
+              }
+              return const SettingView();
             }),
             Positioned(
               bottom: 0,
@@ -69,22 +71,29 @@ class DefaultView extends StatelessWidget {
                           15), // Adjust sigmaX and sigmaY for blur intensity
                   child: Container(
                     height: 80, // Adjust height for the AppBar-like widget
-                    color: Theme.of(context)
-                        .colorScheme
-                        .background
-                        .withOpacity(0.5),
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 10.0),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                        child: AppBar(
-                          leading: ModeSwitch(isDark: PublicUsed.changeTheme()),
-                          title: LogoComponent(isDark: PublicUsed.isDark()),
-                          centerTitle: true,
-                          actions: [
-                            LanguageSwitch(
-                                isKhmer: PublicUsed.changeLanguage()),
-                          ],
+                    decoration: BoxDecoration(
+                      color: Theme.of(context)
+                          .colorScheme
+                          .background
+                          .withOpacity(0.5),
+                      border: const Border(
+                        bottom: BorderSide(color: Colors.grey, width: 0.2),
+                      ),
+                    ),
+                    child: Obx(
+                      () => Padding(
+                        padding: const EdgeInsets.only(top: 10.0),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                          child: viewController.currentIndex.value == 0
+                              ? const AppBarHome()
+                              : AppBar(
+                                  title: Text(viewController
+                                      .viewTitle[
+                                          viewController.currentIndex.toInt()]
+                                      .tr
+                                      .toUpperCase()),
+                                ),
                         ),
                       ),
                     ),
@@ -95,6 +104,24 @@ class DefaultView extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+class AppBarHome extends StatelessWidget {
+  const AppBarHome({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return AppBar(
+      leading: ModeSwitch(isDark: PublicUsed.changeTheme()),
+      title: LogoComponent(isDark: PublicUsed.isDark()),
+      centerTitle: true,
+      actions: [
+        LanguageSwitch(isKhmer: PublicUsed.changeLanguage()),
+      ],
     );
   }
 }

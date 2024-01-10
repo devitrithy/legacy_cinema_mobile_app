@@ -30,15 +30,14 @@ class _BottomNavigationBarComponentState
       }),
       destinations: [
         NavigationDestination(
-            icon: const Icon(Icons.movie),
+            icon: const Icon(Icons.movie_filter_outlined),
             label: "movie".tr,
             tooltip: "movie".tr),
         NavigationDestination(
             icon: const Icon(Iconsax.location),
             label: "cinema".tr.toUpperCase()),
         NavigationDestination(
-            icon: const Icon(Iconsax.ticket),
-            label: "history".tr.toUpperCase()),
+            icon: const Icon(Iconsax.ticket), label: "ticket".tr.toUpperCase()),
         NavigationDestination(
             icon: const Icon(Iconsax.setting4),
             label: "setting".tr.toUpperCase()),
@@ -50,4 +49,5 @@ class _BottomNavigationBarComponentState
 class BottomNavigationBarController extends GetxController {
   var currentIndex = 0.obs;
   var view = [HomeView(), CinemaView(), HistoryView(), SettingView()];
+  var viewTitle = ["movies", "cinema", "ticket", "setting"];
 }

@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:legacy_cinema/controllers/home.controller.dart';
@@ -18,8 +19,11 @@ class TrailerComponent extends StatelessWidget {
         child: Stack(
           alignment: Alignment.center,
           children: [
-            Image.network(
-              "https://img.youtube.com/vi/${controller.movieList[controller.movieIndex.toInt()].trailer}/hqdefault.jpg",
+            CachedNetworkImage(
+              imageUrl:
+                  "https://img.youtube.com/vi/${controller.movieList[controller.movieIndex.toInt()].trailer}/hqdefault.jpg",
+              placeholder: (context, url) =>
+                  const Center(child: CircularProgressIndicator()),
               width: 500,
               height: 400,
               fit: BoxFit.cover,

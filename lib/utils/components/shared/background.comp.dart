@@ -48,7 +48,7 @@ class Background extends StatelessWidget {
               color: !PublicUsed.isDark()
                   ? Colors.black.withOpacity(0.6)
                   : Colors.white
-                      .withOpacity(0.2), // Adjust overlay color and opacity
+                      .withOpacity(0.45), // Adjust overlay color and opacity
               child: SafeArea(child: child),
             ),
           ),
