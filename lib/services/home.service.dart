@@ -65,8 +65,7 @@ class HttpService {
     return res.statusCode;
   }
 
-  static Future<dynamic> fetchShowingTime(String movieId) async {
-    int day = DateTime.now().day;
+  static Future<dynamic> fetchShowingTime(String movieId, int day) async {
     String url = "${PublicUsed.apiEndPoint}/showing/now/$movieId?day=$day";
     var res = await http.get(Uri.parse(url),
         headers: {'Authorization': 'Bearer ${PublicUsed.getToken()}'});

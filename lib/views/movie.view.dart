@@ -1,3 +1,4 @@
+import 'package:date_time_format/date_time_format.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -5,6 +6,8 @@ import 'package:iconsax/iconsax.dart';
 import 'package:legacy_cinema/controllers/home.controller.dart';
 import 'package:legacy_cinema/utils/components/hall_comp.dart';
 import 'package:legacy_cinema/utils/components/shared/background.comp.dart';
+import 'package:legacy_cinema/utils/components/shared/date_time_pick.dart';
+import 'package:legacy_cinema/utils/components/shared/logo.comp.dart';
 import 'package:legacy_cinema/utils/components/shared/title_movie.comp.dart';
 import 'package:legacy_cinema/utils/components/trailer.comp.dart';
 import 'package:legacy_cinema/utils/public_used.dart';
@@ -47,13 +50,32 @@ class MovieView extends StatelessWidget {
                                   .movieList[controller.movieIndex.toInt()],
                             ),
                           ),
-                          SizedBox(
-                            height: 40,
+                          const SizedBox(
+                            height: 20,
                           ),
-                          Row(
-                            children: [
-                              //
-                            ],
+                          Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 15.0),
+                            child: Row(
+                              children: controller.listOfDate
+                                  .asMap()
+                                  .entries
+                                  .map<Widget>(
+                                (entry) {
+                                  var index = entry.key;
+                                  return DateTimeComponent(
+                                    date: controller.listOfDate[index],
+                                    onTap: () async =>
+                                        controller.fetchLocations(
+                                      controller.listOfDate[index].day,
+                                    ),
+                                  );
+                                },
+                              ).toList(),
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 20,
                           ),
                           Obx(() {
                             if (controller.showingTimeList.isNotEmpty) {
@@ -65,8 +87,8 @@ class MovieView extends StatelessWidget {
                                     children: [
                                       ExpansionTile(
                                         initiallyExpanded: true,
-                                        leading: Image.asset(
-                                            'assets/image/${PublicUsed.isDark() ? 'light' : 'dark'}_logo.png',
+                                        leading: LogoComponent(
+                                            isDark: PublicUsed.isDark(),
                                             width: 50),
                                         title: Text(element.locationName),
                                         children: [
@@ -90,15 +112,21 @@ class MovieView extends StatelessWidget {
                               );
                             } else {
                               return Container(
-                                height: 300,
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.center,
-                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Image.asset(
                                       'assets/image/no_showing_time_2.png',
                                       height: 200,
                                     ),
+                                    // Lottie.asset(
+                                    //   "assets/animations/no_showing_time_red.json",
+                                    //   height: 200,
+                                    //   reverse: true,
+                                    //   repeat: true,
+                                    //   fit: BoxFit.contain,
+                                    // ),
                                     Center(
                                       child: Text(
                                         "No Showing Time Available"

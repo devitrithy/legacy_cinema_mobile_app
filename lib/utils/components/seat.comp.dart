@@ -22,7 +22,7 @@ class SeatWidget extends StatelessWidget {
         children: [
           BlurryContainer(
             elevation: 10,
-            borderRadius: BorderRadius.all(Radius.circular(10)),
+            borderRadius: const BorderRadius.all(Radius.circular(10)),
             padding: const EdgeInsets.all(10),
             color: Colors.black54,
             height: 320,
@@ -68,7 +68,7 @@ class SeatWidget extends StatelessWidget {
                     child: Center(
                       child: Text(
                         "screen".tr,
-                        style: TextStyle(color: Colors.white),
+                        style: const TextStyle(color: Colors.white),
                       ),
                     ),
                   ),

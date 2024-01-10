@@ -59,7 +59,7 @@ class HomeView extends StatelessWidget {
                             // Use index here
                             controller.selectedImage.value = movie.poster!;
                             controller.movieIndex.value = index;
-                            controller.fetchLocations();
+                            controller.fetchLocations(DateTime.now().day);
                             Get.toNamed('/movie_detail');
                           },
                           movie: movie,

@@ -1,6 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:get/get.dart';
 import 'package:legacy_cinema/models/showing_time.model.dart';
@@ -23,20 +22,21 @@ class HomeController extends GetxController {
   var showingId = "".obs;
   var movieIndex = 0.obs;
   var selectOptionLocation = 'All Cinemas'.obs;
-  var listOfDay = [].obs;
+  var listOfDate = [].obs;
   List<Widget> slideshowList = [];
 
   @override
   void onInit() {
     fetchData();
-    generateDay();
+    generateDate();
     super.onInit();
   }
 
-  generateDay() {
-    var today = DateTime.now().day;
-    for (var i = 1; i <= 3; i++) {
-      listOfDay.add(today + i);
+  generateDate() {
+    var currentDate = DateTime.now();
+    listOfDate.value = [];
+    for (var i = 0; i <= 4; i++) {
+      listOfDate.add(currentDate.add(Duration(days: i)));
     }
   }
 
@@ -92,12 +92,12 @@ class HomeController extends GetxController {
     }
   }
 
-  void fetchLocations() async {
+  void fetchLocations(int date) async {
     try {
       isLoading(true);
       showingTimeList.value = [];
       var movies = await HttpService.fetchShowingTime(
-          movieList[movieIndex.value].movieId);
+          movieList[movieIndex.value].movieId, date);
       if (movies == 401) {
         Get.offNamed('/login');
         return;
