@@ -23,6 +23,7 @@ class HomeController extends GetxController {
   var movieIndex = 0.obs;
   var selectOptionLocation = 'All Cinemas'.obs;
   var listOfDate = [].obs;
+  var activeDate = DateTime.now().day.obs;
   List<Widget> slideshowList = [];
 
   @override

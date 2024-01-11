@@ -1,4 +1,3 @@
-import 'package:date_time_format/date_time_format.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -22,6 +21,7 @@ class MovieView extends StatelessWidget {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
+        controller.activeDate.value = DateTime.now().day;
         controller.selectedImage.value = "";
         Navigator.pop(context);
         return false;
@@ -64,12 +64,17 @@ class MovieView extends StatelessWidget {
                                 (entry) {
                                   var index = entry.key;
                                   return DateTimeComponent(
-                                    date: controller.listOfDate[index],
-                                    onTap: () async =>
+                                      active: controller.activeDate ==
+                                          controller.listOfDate[index].day,
+                                      date: controller.listOfDate[index],
+                                      onTap: () async {
+                                        controller.activeDate.value =
+                                            controller.listOfDate[index].day;
+
                                         controller.fetchLocations(
-                                      controller.listOfDate[index].day,
-                                    ),
-                                  );
+                                          controller.listOfDate[index].day,
+                                        );
+                                      });
                                 },
                               ).toList(),
                             ),
@@ -149,6 +154,7 @@ class MovieView extends StatelessWidget {
                     child: IconButton(
                       onPressed: () {
                         controller.selectedImage.value = "";
+                        controller.activeDate.value = DateTime.now().day;
                         Navigator.pop(context);
                       },
                       icon: const Icon(

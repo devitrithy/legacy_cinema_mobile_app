@@ -8,6 +8,7 @@ import 'package:iconsax/iconsax.dart';
 import 'package:legacy_cinema/controllers/home.controller.dart';
 import 'package:legacy_cinema/utils/components/seat.comp.dart';
 import 'package:legacy_cinema/utils/components/shared/background.comp.dart';
+import 'package:legacy_cinema/utils/components/shared/loading_screen.comp.dart';
 import 'package:legacy_cinema/utils/components/shared/logo.comp.dart';
 import 'package:legacy_cinema/utils/components/shared/text_icon.comp.dart';
 import 'package:legacy_cinema/utils/components/shared/button_style.comp.dart'

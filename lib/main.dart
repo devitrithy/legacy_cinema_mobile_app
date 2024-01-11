@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:legacy_cinema/controllers/dependency_injection.dart';
 import 'package:legacy_cinema/utils/components/shared/layout.comp.dart';
+import 'package:legacy_cinema/utils/components/shared/loading_screen.comp.dart';
 import 'package:legacy_cinema/views/booking_ticket.view.dart';
 import 'package:legacy_cinema/views/login.view.dart';
 import 'package:legacy_cinema/views/movie.view.dart';

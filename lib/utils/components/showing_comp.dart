@@ -7,22 +7,19 @@ import 'package:legacy_cinema/utils/components/shared/blur_button.comp.dart';
 
 Widget buildShowingWidget(Showing showing) {
   final HomeController controller = Get.put(HomeController());
-  return Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-      BlurButton(
-        onPressed: () {
-          controller.selectedSeatList.value = [];
-          controller.showingId.value = showing.showingId.toString();
-          controller.showingTime.value = showing;
-          controller.fetchSeat(showing.showingId.toString());
-          Get.toNamed('/select_seat');
-        },
-        child: Text(
-          showing.showingDate!.format('h:i A'),
-        ),
+  return Padding(
+    padding: const EdgeInsets.only(right: 5.0, bottom: 10),
+    child: BlurButton(
+      onPressed: () {
+        controller.selectedSeatList.value = [];
+        controller.showingId.value = showing.showingId.toString();
+        controller.showingTime.value = showing;
+        controller.fetchSeat(showing.showingId.toString());
+        Get.toNamed('/select_seat');
+      },
+      child: Text(
+        showing.showingDate!.format('h:i A'),
       ),
-      const Divider(),
-    ],
+    ),
   );
 }

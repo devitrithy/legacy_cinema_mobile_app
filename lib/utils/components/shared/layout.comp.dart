@@ -12,6 +12,7 @@ import 'package:legacy_cinema/views/cinema.view.dart';
 import 'package:legacy_cinema/views/history.view.dart';
 import 'package:legacy_cinema/views/home.view.dart';
 import 'package:legacy_cinema/views/setting.view.dart';
+import 'package:lottie/lottie.dart';
 
 class DefaultView extends StatelessWidget {
   DefaultView({super.key});
@@ -86,13 +87,58 @@ class DefaultView extends StatelessWidget {
                         child: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 10.0),
                           child: viewController.currentIndex.value == 0
-                              ? const AppBarHome()
+                              ? AppBar(
+                                  leading: ModeSwitch(
+                                      isDark: PublicUsed.changeTheme()),
+                                  title: LogoComponent(
+                                      isDark: PublicUsed.isDark()),
+                                  centerTitle: true,
+                                  actions: [
+                                    LanguageSwitch(
+                                        isKhmer: PublicUsed.changeLanguage()),
+                                  ],
+                                )
                               : AppBar(
-                                  title: Text(viewController
-                                      .viewTitle[
-                                          viewController.currentIndex.toInt()]
-                                      .tr
-                                      .toUpperCase()),
+                                  title: Text(
+                                    viewController
+                                        .viewTitle[
+                                            viewController.currentIndex.toInt()]
+                                        .tr
+                                        .toUpperCase(),
+                                    style: TextStyle(
+                                      letterSpacing:
+                                          PublicUsed.isKhmer() ? 0 : 10,
+                                    ),
+                                  ),
+                                  actions: [
+                                    Obx(() {
+                                      if (viewController.currentIndex == 1) {
+                                        return Lottie.asset(
+                                          "assets/animations/cinema.json",
+                                          repeat: true,
+                                          reverse: true,
+                                          fit: BoxFit.contain,
+                                        );
+                                      } else if (viewController.currentIndex ==
+                                          2) {
+                                        return Lottie.asset(
+                                          "assets/animations/ticket.json",
+                                          repeat: true,
+                                          reverse: true,
+                                          height: 200,
+                                          fit: BoxFit.contain,
+                                        );
+                                      } else {
+                                        return Lottie.asset(
+                                          "assets/animations/setting.json",
+                                          repeat: true,
+                                          reverse: true,
+                                          height: 40,
+                                          fit: BoxFit.contain,
+                                        );
+                                      }
+                                    })
+                                  ],
                                 ),
                         ),
                       ),
@@ -104,24 +150,6 @@ class DefaultView extends StatelessWidget {
           ],
         ),
       ),
-    );
-  }
-}
-
-class AppBarHome extends StatelessWidget {
-  const AppBarHome({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return AppBar(
-      leading: ModeSwitch(isDark: PublicUsed.changeTheme()),
-      title: LogoComponent(isDark: PublicUsed.isDark()),
-      centerTitle: true,
-      actions: [
-        LanguageSwitch(isKhmer: PublicUsed.changeLanguage()),
-      ],
     );
   }
 }

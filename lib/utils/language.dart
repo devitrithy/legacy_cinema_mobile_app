@@ -21,7 +21,7 @@ class Language extends Translations {
           "trailer": "New Trailer",
           "info": "Info",
           "booking": "Booking",
-          "cinema": "Cinemas",
+          "cinema": "Cinema",
           "login": "Login",
           "register": "Register",
           "logout": "Logout",

@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:legacy_cinema/utils/components/register_form.dart';
 import 'package:legacy_cinema/controllers/register.controller.dart';
 import 'package:legacy_cinema/utils/components/shared/form.comp.dart';
+import 'package:legacy_cinema/utils/components/shared/loading_screen.comp.dart';
 
 class RegisterView extends StatelessWidget {
   RegisterView({super.key});

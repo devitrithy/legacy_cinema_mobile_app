@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:legacy_cinema/controllers/location.controller.dart';
 import 'package:legacy_cinema/utils/components/shared/background.comp.dart';
+import 'package:legacy_cinema/utils/components/shared/loading_screen.comp.dart';
 import 'package:legacy_cinema/utils/components/shared/logo.comp.dart';
 import 'package:legacy_cinema/utils/public_used.dart';
 

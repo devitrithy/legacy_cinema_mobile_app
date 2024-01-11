@@ -18,7 +18,7 @@ Widget buildHallWidget(Hall hall) {
           children: [
             Text(hall.hallName!.toUpperCase()),
             const SizedBox(height: 10),
-            Column(
+            Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: hall.showing!.asMap().entries.map<Widget>((entry) {
                 final showing = entry.value;
