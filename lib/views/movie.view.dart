@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -42,12 +43,28 @@ class MovieView extends StatelessWidget {
                           const SizedBox(
                             height: 20,
                           ),
-                          Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 20.0),
-                            child: TitleMovieComponent(
-                              movie: controller
-                                  .movieList[controller.movieIndex.toInt()],
+                          Container(
+                            decoration: BoxDecoration(
+                                color: Colors.black.withOpacity(0.8)),
+                            child: Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 10.0),
+                              child: Row(
+                                children: [
+                                  CachedNetworkImage(
+                                      width: 100,
+                                      height: 200,
+                                      imageUrl:
+                                          "${PublicUsed.apiEndPoint}/${controller.movieList[controller.movieIndex.toInt()].poster}"),
+                                  const SizedBox(
+                                    width: 10,
+                                  ),
+                                  TitleMovieComponent(
+                                    movie: controller.movieList[
+                                        controller.movieIndex.toInt()],
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                           const SizedBox(

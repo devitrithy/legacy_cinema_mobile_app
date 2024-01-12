@@ -4,7 +4,6 @@ import 'package:legacy_cinema/utils/components/login_form_method.dart';
 import 'package:legacy_cinema/utils/components/shared/background.comp.dart';
 import 'package:legacy_cinema/utils/components/shared/form.comp.dart';
 import 'package:legacy_cinema/controllers/login.controller.dart';
-import 'package:legacy_cinema/utils/components/shared/loading_screen.comp.dart';
 
 class LoginView extends StatelessWidget {
   LoginView({super.key});

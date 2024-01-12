@@ -8,7 +8,6 @@ import 'package:iconsax/iconsax.dart';
 import 'package:legacy_cinema/controllers/home.controller.dart';
 import 'package:legacy_cinema/utils/components/seat.comp.dart';
 import 'package:legacy_cinema/utils/components/shared/background.comp.dart';
-import 'package:legacy_cinema/utils/components/shared/loading_screen.comp.dart';
 import 'package:legacy_cinema/utils/components/shared/logo.comp.dart';
 import 'package:legacy_cinema/utils/components/shared/text_icon.comp.dart';
 import 'package:legacy_cinema/utils/components/shared/button_style.comp.dart'
@@ -170,7 +169,13 @@ class SelectingSeatView extends StatelessWidget {
                                   onPressed: () {
                                     if (controller
                                         .selectedSeatList.isNotEmpty) {
-                                      controller.purchaseTicket();
+                                      // controller.purchaseTicket();
+                                      controller.makePayment(
+                                          amount: (controller
+                                                      .selectedSeatList.length *
+                                                  5)
+                                              .toString(),
+                                          currency: "USD");
                                     }
                                     return;
                                   },

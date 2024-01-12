@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import 'package:legacy_cinema/controllers/home.controller.dart';
 import 'package:legacy_cinema/utils/components/shared/background.comp.dart';
 import 'package:legacy_cinema/utils/components/shared/list_tile_custom.dart';
-import 'package:legacy_cinema/utils/components/shared/loading_screen.comp.dart';
 import 'package:legacy_cinema/utils/components/slideshow.comp.dart';
 
 class HomeView extends StatelessWidget {

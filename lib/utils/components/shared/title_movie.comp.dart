@@ -17,7 +17,7 @@ class TitleMovieComponent extends StatelessWidget {
     return Container(
       height: 160,
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(movie.title.toString(),

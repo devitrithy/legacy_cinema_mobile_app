@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:legacy_cinema/controllers/home.controller.dart';
 
 class SeatComponent extends StatefulWidget {

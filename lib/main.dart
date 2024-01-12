@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:legacy_cinema/controllers/dependency_injection.dart';
 import 'package:legacy_cinema/utils/components/shared/layout.comp.dart';
-import 'package:legacy_cinema/utils/components/shared/loading_screen.comp.dart';
 import 'package:legacy_cinema/views/booking_ticket.view.dart';
 import 'package:legacy_cinema/views/login.view.dart';
 import 'package:legacy_cinema/views/movie.view.dart';
@@ -21,6 +21,10 @@ void main() async {
   bool isDark = PublicUsed.isDark();
   Locale lang = isKhmer ? const Locale("kh", "KH") : const Locale("en", "US");
   DependencyInjection.init();
+  WidgetsFlutterBinding.ensureInitialized();
+  Stripe.publishableKey =
+      'pk_test_51MlBeALmuduO7w8mZ14CKOsSInmnHeU3iDtkIJvZ4EORK0U1JlSspP28fF9zcEemBRkRftu87CCVHk9RKJAqtQWd00VhKt5Xv1';
+
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   runApp(
     GetMaterialApp(
