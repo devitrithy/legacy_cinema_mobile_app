@@ -12,7 +12,6 @@ import 'package:legacy_cinema/views/cinema.view.dart';
 import 'package:legacy_cinema/views/history.view.dart';
 import 'package:legacy_cinema/views/home.view.dart';
 import 'package:legacy_cinema/views/setting.view.dart';
-import 'package:lottie/lottie.dart';
 
 class DefaultView extends StatelessWidget {
   DefaultView({super.key});
@@ -30,9 +29,9 @@ class DefaultView extends StatelessWidget {
               if (viewController.currentIndex.value == 0) return HomeView();
               if (viewController.currentIndex.value == 1) return CinemaView();
               if (viewController.currentIndex.value == 2) {
-                return const HistoryView();
+                return HistoryView();
               }
-              return const SettingView();
+              return SettingView();
             }),
             Positioned(
               bottom: 0,
@@ -99,6 +98,7 @@ class DefaultView extends StatelessWidget {
                                   ],
                                 )
                               : AppBar(
+                                  centerTitle: true,
                                   title: Text(
                                     viewController
                                         .viewTitle[
@@ -110,35 +110,6 @@ class DefaultView extends StatelessWidget {
                                           PublicUsed.isKhmer() ? 0 : 10,
                                     ),
                                   ),
-                                  actions: [
-                                    Obx(() {
-                                      if (viewController.currentIndex == 1) {
-                                        return Lottie.asset(
-                                          "assets/animations/cinema.json",
-                                          repeat: true,
-                                          reverse: true,
-                                          fit: BoxFit.contain,
-                                        );
-                                      } else if (viewController.currentIndex ==
-                                          2) {
-                                        return Lottie.asset(
-                                          "assets/animations/ticket.json",
-                                          repeat: true,
-                                          reverse: true,
-                                          height: 200,
-                                          fit: BoxFit.contain,
-                                        );
-                                      } else {
-                                        return Lottie.asset(
-                                          "assets/animations/setting.json",
-                                          repeat: true,
-                                          reverse: true,
-                                          height: 40,
-                                          fit: BoxFit.contain,
-                                        );
-                                      }
-                                    })
-                                  ],
                                 ),
                         ),
                       ),

@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
 import 'package:legacy_cinema/services/history.service.dart';
 
-class HistoryTicket extends GetxController {
-  var bookingTickets = [].obs;
+class HistoryTicketController extends GetxController {
+  RxList bookingTickets = [].obs;
 
   @override
   void onInit() {
@@ -12,11 +12,12 @@ class HistoryTicket extends GetxController {
 
   fetchTicket() async {
     try {
-      var res = HttpService.fetchBookingHistory();
+      var res = await HttpService.fetchBookingHistory();
+      print(res);
       if (res == 401) {
         Get.offNamed('/login');
       } else {
-        bookingTickets.value = res as List<HistoryTicket>;
+        bookingTickets.value = res;
       }
     } catch (e) {
       print(e.toString());

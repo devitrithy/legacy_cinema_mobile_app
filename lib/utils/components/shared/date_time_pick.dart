@@ -31,7 +31,7 @@ class DateTimeComponent extends StatelessWidget {
             border: Border.all(color: Theme.of(context).colorScheme.primary),
             borderRadius: const BorderRadius.all(
               Radius.circular(
-                15,
+                7,
               ),
             ),
           ),

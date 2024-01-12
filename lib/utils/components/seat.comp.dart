@@ -5,7 +5,7 @@ import 'package:legacy_cinema/controllers/home.controller.dart';
 import 'package:legacy_cinema/utils/components/shared/seat.comp.dart';
 
 class SeatWidget extends StatelessWidget {
-  const SeatWidget({
+  SeatWidget({
     super.key,
     required this.controller,
   });
@@ -14,8 +14,10 @@ class SeatWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Orientation screen = MediaQuery.of(context).orientation;
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
+      padding: EdgeInsets.symmetric(
+          horizontal: screen == Orientation.landscape ? 40 : 20),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -25,7 +27,7 @@ class SeatWidget extends StatelessWidget {
             borderRadius: const BorderRadius.all(Radius.circular(10)),
             padding: const EdgeInsets.all(10),
             color: Colors.black54,
-            height: 320,
+            height: screen == Orientation.landscape ? 500 : 300,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -34,7 +36,7 @@ class SeatWidget extends StatelessWidget {
                   height: 5,
                 ),
                 Container(
-                  height: 200,
+                  height: screen == Orientation.landscape ? 350 : 180,
                   child: InteractiveViewer(
                     child: GridView.builder(
                       itemCount: controller.seatList.length,
@@ -43,6 +45,8 @@ class SeatWidget extends StatelessWidget {
                               crossAxisCount: 20),
                       itemBuilder: (context, index) {
                         return SeatComponent(
+                          isRotate:
+                              screen == Orientation.landscape ? true : false,
                           isAvaialble: !controller.seatList[index].selected,
                           seat: controller.seatList[index].seatNumber,
                           controller: controller,

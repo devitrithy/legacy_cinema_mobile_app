@@ -21,6 +21,9 @@ class Language extends Translations {
           "trailer": "New Trailer",
           "info": "Info",
           "booking": "Booking",
+          "genre": "Genre",
+          "release": "Release",
+          "duration": "Duration",
           "cinema": "Cinema",
           "login": "Login",
           "register": "Register",
@@ -97,6 +100,9 @@ class Language extends Translations {
           "Romance": "មនោសញ្ចេតនា",
           "Horror": "ភ័យរន្ធត់",
           "Documentary": "ភាពយន្តឯកសារ",
+          "genre": "ប្រភេទ​រឿង",
+          "release": "ចេញផ្សាយ",
+          "duration": "​រយៈពេល",
         }
       };
 }

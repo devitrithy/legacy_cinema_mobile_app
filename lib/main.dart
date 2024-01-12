@@ -25,7 +25,7 @@ void main() async {
   Stripe.publishableKey =
       'pk_test_51MlBeALmuduO7w8mZ14CKOsSInmnHeU3iDtkIJvZ4EORK0U1JlSspP28fF9zcEemBRkRftu87CCVHk9RKJAqtQWd00VhKt5Xv1';
 
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  // SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   runApp(
     GetMaterialApp(
       debugShowCheckedModeBanner: false,

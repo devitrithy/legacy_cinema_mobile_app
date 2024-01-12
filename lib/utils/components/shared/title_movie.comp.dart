@@ -15,6 +15,7 @@ class TitleMovieComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: 250,
       height: 160,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -22,7 +23,7 @@ class TitleMovieComponent extends StatelessWidget {
         children: [
           Text(movie.title.toString(),
               style:
-                  const TextStyle(fontSize: 13, fontWeight: FontWeight.bold)),
+                  const TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
           const SizedBox(
             height: 10,
           ),
@@ -31,18 +32,18 @@ class TitleMovieComponent extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               TextIcon(
-                  icon: Icons.movie_filter, text: movie.genre.toString().tr),
+                  icon: Icons.movie_filter,
+                  text: "${'genre'.tr}: ${movie.genre.toString().tr}"),
               TextIcon(
                   icon: Icons.date_range,
-                  text: DateTimeFormat.format(movie.releaseDate!,
-                      format: "D M Y")),
+                  text:
+                      "${'release'.tr}: ${DateTimeFormat.format(movie.releaseDate!, format: "D M Y")}"),
               TextIcon(
-                text: "${movie.time} ${'minute'.tr}",
+                text: "${'duration'.tr}: ${movie.time} ${'minute'.tr}",
                 icon: Icons.timer,
               ),
             ],
           ),
-          const TextIcon(icon: Icons.attach_money_rounded, text: "5"),
         ],
       ),
     );

@@ -71,7 +71,7 @@ class HomeController extends GetxController {
         genre: showingTimeTicket.value.movie!.genre,
         origin: "https://legacycinema.vercel.app",
         day: DateTime.now().day,
-        uid: PublicUsed.getUserId()["user_id"],
+        uid: PublicUsed.getUserId(),
         mid: showingTimeTicket.value.movieId,
         seats: selectedSeatList
             .toString()

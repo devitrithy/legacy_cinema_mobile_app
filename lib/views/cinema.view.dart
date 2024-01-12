@@ -32,12 +32,13 @@ class CinemaView extends StatelessWidget {
                         controller.locationList[index].locationId,
                       ),
                       leading: LogoComponent(
+                        width: 50,
                         isDark: PublicUsed.isDark(),
                       ),
                       title: Text(
                         controller.locationList[index].locationName,
                       ),
-                      trailing: const Icon(Iconsax.info_circle),
+                      trailing: const Icon(Iconsax.arrow_right),
                     ),
                   ),
                   itemCount: controller.locationList.length,

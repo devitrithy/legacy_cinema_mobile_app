@@ -40,64 +40,61 @@ class MovieView extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           TrailerComponent(controller: controller),
-                          const SizedBox(
-                            height: 20,
-                          ),
                           Container(
                             decoration: BoxDecoration(
-                                color: Colors.black.withOpacity(0.8)),
+                                color: Colors.black.withOpacity(0.6)),
                             child: Padding(
                               padding:
-                                  const EdgeInsets.symmetric(horizontal: 10.0),
-                              child: Row(
+                                  const EdgeInsets.symmetric(horizontal: 20.0),
+                              child: Column(
                                 children: [
-                                  CachedNetworkImage(
-                                      width: 100,
-                                      height: 200,
-                                      imageUrl:
-                                          "${PublicUsed.apiEndPoint}/${controller.movieList[controller.movieIndex.toInt()].poster}"),
-                                  const SizedBox(
-                                    width: 10,
+                                  Row(
+                                    children: [
+                                      CachedNetworkImage(
+                                          width: 100,
+                                          height: 200,
+                                          imageUrl:
+                                              "${PublicUsed.apiEndPoint}/${controller.movieList[controller.movieIndex.toInt()].poster}"),
+                                      const SizedBox(
+                                        width: 10,
+                                      ),
+                                      TitleMovieComponent(
+                                        movie: controller.movieList[
+                                            controller.movieIndex.toInt()],
+                                      ),
+                                    ],
                                   ),
-                                  TitleMovieComponent(
-                                    movie: controller.movieList[
-                                        controller.movieIndex.toInt()],
+                                  Row(
+                                    children: controller.listOfDate
+                                        .asMap()
+                                        .entries
+                                        .map<Widget>(
+                                      (entry) {
+                                        var index = entry.key;
+                                        return DateTimeComponent(
+                                            active: controller.activeDate ==
+                                                controller
+                                                    .listOfDate[index].day,
+                                            date: controller.listOfDate[index],
+                                            onTap: () async {
+                                              controller.activeDate.value =
+                                                  controller
+                                                      .listOfDate[index].day;
+
+                                              controller.fetchLocations(
+                                                controller
+                                                    .listOfDate[index].day,
+                                              );
+                                            });
+                                      },
+                                    ).toList(),
+                                  ),
+                                  const SizedBox(
+                                    height: 20,
                                   ),
                                 ],
                               ),
                             ),
-                          ),
-                          const SizedBox(
-                            height: 20,
-                          ),
-                          Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 15.0),
-                            child: Row(
-                              children: controller.listOfDate
-                                  .asMap()
-                                  .entries
-                                  .map<Widget>(
-                                (entry) {
-                                  var index = entry.key;
-                                  return DateTimeComponent(
-                                      active: controller.activeDate ==
-                                          controller.listOfDate[index].day,
-                                      date: controller.listOfDate[index],
-                                      onTap: () async {
-                                        controller.activeDate.value =
-                                            controller.listOfDate[index].day;
-
-                                        controller.fetchLocations(
-                                          controller.listOfDate[index].day,
-                                        );
-                                      });
-                                },
-                              ).toList(),
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 20,
                           ),
                           Obx(() {
                             if (controller.showingTimeList.isNotEmpty) {
@@ -134,6 +131,7 @@ class MovieView extends StatelessWidget {
                               );
                             } else {
                               return Container(
+                                height: 400,
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -142,13 +140,6 @@ class MovieView extends StatelessWidget {
                                       'assets/image/no_showing_time_2.png',
                                       height: 200,
                                     ),
-                                    // Lottie.asset(
-                                    //   "assets/animations/no_showing_time_red.json",
-                                    //   height: 200,
-                                    //   reverse: true,
-                                    //   repeat: true,
-                                    //   fit: BoxFit.contain,
-                                    // ),
                                     Center(
                                       child: Text(
                                         "No Showing Time Available"
