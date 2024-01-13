@@ -9,7 +9,7 @@ ThemeData darkTheme = ThemeData(
     iconTheme: IconThemeData(color: Colors.white70),
     foregroundColor: Colors.white70,
   ),
-  fontFamily: PublicUsed.isKhmer() ? "NotoSansKhmer" : "OpenSans",
+  fontFamily: PublicUsed.isKhmer() ? "DaunTeav" : "Quicksand",
   colorScheme: const ColorScheme.dark(
     background: Color.fromRGBO(17, 24, 39, 1),
     primary: Color.fromRGBO(255, 255, 255, 1),

@@ -3,7 +3,7 @@ import 'package:legacy_cinema/utils/public_used.dart';
 
 ThemeData lightTheme = ThemeData(
   brightness: Brightness.light,
-  fontFamily: PublicUsed.isKhmer() ? "NotoSansKhmer" : "OpenSans",
+  fontFamily: PublicUsed.isKhmer() ? "DaunTeav" : "Quicksand",
   appBarTheme: const AppBarTheme(
       backgroundColor: Colors.transparent,
       elevation: 0,

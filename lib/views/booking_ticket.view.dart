@@ -61,7 +61,7 @@ class SelectingSeatView extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 10.0),
                           child: Container(
-                            height: 100,
+                            height: 120,
                             width: double.infinity,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -115,11 +115,14 @@ class SelectingSeatView extends StatelessWidget {
                           ),
                         ),
                         Container(
-                            height: screen == Orientation.landscape ? 500 : 370,
+                            height: screen == Orientation.landscape ? 530 : 370,
                             child: RefreshIndicator(
                                 onRefresh: () async => controller
                                     .fetchSeat(controller.showingId.toString()),
                                 child: SeatWidget(controller: controller))),
+                        const SizedBox(
+                          height: 20,
+                        ),
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: 20.0),
                           child: Container(

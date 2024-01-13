@@ -87,15 +87,9 @@ class DefaultView extends StatelessWidget {
                           padding: const EdgeInsets.symmetric(horizontal: 10.0),
                           child: viewController.currentIndex.value == 0
                               ? AppBar(
-                                  leading: ModeSwitch(
-                                      isDark: PublicUsed.changeTheme()),
                                   title: LogoComponent(
                                       isDark: PublicUsed.isDark()),
                                   centerTitle: true,
-                                  actions: [
-                                    LanguageSwitch(
-                                        isKhmer: PublicUsed.changeLanguage()),
-                                  ],
                                 )
                               : AppBar(
                                   centerTitle: true,

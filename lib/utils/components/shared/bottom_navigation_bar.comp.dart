@@ -30,7 +30,7 @@ class _BottomNavigationBarComponentState
       }),
       destinations: [
         NavigationDestination(
-            icon: const Icon(Icons.movie_filter_outlined),
+            icon: const Icon(Iconsax.home),
             label: "movie".tr,
             tooltip: "movie".tr),
         NavigationDestination(

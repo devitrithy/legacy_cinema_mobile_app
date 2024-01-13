@@ -40,4 +40,10 @@ class PublicUsed {
         JwtDecoder.decode(getToken().toString());
     return decodedToken['user_id'];
   }
+
+  static Map<String, dynamic> getUser() {
+    Map<String, dynamic> decodedToken =
+        JwtDecoder.decode(getToken().toString());
+    return decodedToken;
+  }
 }

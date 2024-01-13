@@ -7,7 +7,6 @@ class HttpService {
   static Future<dynamic> fetchBookingHistory() async {
     String url =
         "${PublicUsed.apiEndPoint}/booking/${PublicUsed.getUserId().toString()}";
-    print("URL: $url");
     var res = await http.get(Uri.parse(url),
         headers: {'Authorization': 'Bearer ${PublicUsed.getToken()}'});
     if (res.statusCode == 200) {

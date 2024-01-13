@@ -37,7 +37,7 @@ class DateTimeComponent extends StatelessWidget {
           ),
           child: Center(
             child: Text(
-              DateTimeFormat.format(date, format: "d M Y").toString(),
+              DateTimeFormat.format(date, format: "d M").toString(),
               style: TextStyle(
                   color: PublicUsed.isDark()
                       ? active == true

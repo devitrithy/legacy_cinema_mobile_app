@@ -16,7 +16,6 @@ class CinemaController extends GetxController {
     isLoading.value = true;
     try {
       var res = await HttpService.fetchLocations();
-      print(res);
       if (res == 401) {
         Get.offNamed('/login');
         return;

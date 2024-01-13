@@ -54,3 +54,19 @@ flutter:
         - asset: assets/fonts/english/OpenSans-Regular.ttf
         - asset: assets/fonts/english/OpenSans-Bold.ttf
         - asset: assets/fonts/english/OpenSans-SemiBold.ttf
+    - family: Quicksand
+      fonts:
+        - asset: assets/fonts/english/Quicksand-Light.ttf
+        - asset: assets/fonts/english/Quicksand-Medium.ttf
+        - asset: assets/fonts/english/Quicksand-Regular.ttf
+        - asset: assets/fonts/english/Quicksand-Bold.ttf
+        - asset: assets/fonts/english/Quicksand-SemiBold.ttf
+    - family: AKbalthom
+      fonts:
+        - asset: assets/fonts/khmer/AKbalthom.ttf
+    - family: Bayon
+      fonts:
+        - asset: assets/fonts/khmer/Bayon.ttf
+    - family: DaunTeav
+      fonts:
+        - asset: assets/fonts/khmer/DaunTeav.ttf

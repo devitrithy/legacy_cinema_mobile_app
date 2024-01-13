@@ -27,16 +27,13 @@ class SeatWidget extends StatelessWidget {
             borderRadius: const BorderRadius.all(Radius.circular(10)),
             padding: const EdgeInsets.all(10),
             color: Colors.black54,
-            height: screen == Orientation.landscape ? 500 : 300,
+            height: screen == Orientation.landscape ? 530 : 300,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const SizedBox(
-                  height: 5,
-                ),
                 Container(
-                  height: screen == Orientation.landscape ? 350 : 180,
+                  height: screen == Orientation.landscape ? 400 : 200,
                   child: InteractiveViewer(
                     child: GridView.builder(
                       itemCount: controller.seatList.length,
@@ -76,9 +73,6 @@ class SeatWidget extends StatelessWidget {
                       ),
                     ),
                   ),
-                ),
-                const SizedBox(
-                  height: 30,
                 ),
               ],
             ),

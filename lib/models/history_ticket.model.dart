@@ -42,7 +42,7 @@ class HistoryTicketModel {
 
 class Showingtime {
   String? showingId;
-  String? showingDate;
+  DateTime? showingDate;
   String? movieId;
   String? hallId;
   String? price;
@@ -64,7 +64,7 @@ class Showingtime {
 
   Showingtime.fromJson(Map<String, dynamic> json) {
     showingId = json['showing_id'];
-    showingDate = json['showing_date'];
+    showingDate = DateTime.parse(json['showing_date']);
     movieId = json['movie_id'];
     hallId = json['hall_id'];
     price = json['price'];

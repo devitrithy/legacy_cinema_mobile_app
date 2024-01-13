@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:legacy_cinema/models/payment.model.dart';
+import 'package:legacy_cinema/utils/components/shared/movie_card.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:get/get.dart';
 import 'package:legacy_cinema/models/showing_time.model.dart';
@@ -29,7 +30,7 @@ class HomeController extends GetxController {
   var selectOptionLocation = 'All Cinemas'.obs;
   var listOfDate = [].obs;
   var activeDate = DateTime.now().day.obs;
-  List<Widget> slideshowList = [];
+  List<Widget> popularMovieList = [];
 
   @override
   void onInit() {
@@ -120,20 +121,23 @@ class HomeController extends GetxController {
       isLoading(true);
       movieList.value = [];
       commingSoonList.value = [];
-      slideshowList = [];
+      popularMovieList = [];
       var movies = await HttpService.fetchMovies();
-      var slideshows = await HttpService.fetchSlideshows();
       if (movies == 401) {
         Get.offNamed('/login');
         return;
       } else {
-        for (var element in slideshows) {
-          slideshowList.add(
-            CachedNetworkImage(
-              imageUrl:
-                  "${PublicUsed.apiEndPoint}/thumbnail/${element.poster!.split('\\')[1]}?w=400&h=100",
-              placeholder: (context, url) =>
-                  const Center(child: CircularProgressIndicator()),
+        for (var i = 0; i < 5; i++) {
+          popularMovieList.add(
+            MovieCard(
+              onTap: () {
+                movieIndex.value = i;
+                selectedImage.value = movieList[i].poster;
+                Get.toNamed('/movie_detail');
+              },
+              image: "${PublicUsed.apiEndPoint}/${movies[i].poster}",
+              title: movies[i].title,
+              releaseDate: movies[i].releaseDate,
             ),
           );
         }
@@ -179,6 +183,7 @@ class HomeController extends GetxController {
       var res = await http.post(Uri.parse("${PublicUsed.apiEndPoint}/ticket"),
           body: json.encode(PaymentModel(
                   arrayDatas: arrayDatas,
+                  uid: PublicUsed.getUserId(),
                   isBooking: true,
                   sid: showingTimeTicket.value.showingId)
               .toJson()),

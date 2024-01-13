@@ -23,7 +23,7 @@ class TitleMovieComponent extends StatelessWidget {
         children: [
           Text(movie.title.toString(),
               style:
-                  const TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+                  const TextStyle(fontWeight: FontWeight.bold, fontSize: 15)),
           const SizedBox(
             height: 10,
           ),

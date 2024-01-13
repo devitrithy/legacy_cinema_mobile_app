@@ -19,18 +19,18 @@ class SlideshowWidget extends StatelessWidget {
         CarouselSlider(
           options: CarouselOptions(
             autoPlay: true,
-            height: 100,
+            height: 500,
             autoPlayCurve: Curves.fastOutSlowIn,
             autoPlayAnimationDuration: const Duration(seconds: 1),
             autoPlayInterval: const Duration(seconds: 5),
             animateToClosest: true,
-            aspectRatio: 2.0,
+            aspectRatio: 3,
             enlargeCenterPage: true,
             onPageChanged: (index, reason) {
               controller.currentSlideshowIndex.value = index;
             },
           ),
-          items: controller.slideshowList,
+          items: controller.popularMovieList,
         ),
         const SizedBox(
           height: 10,
@@ -44,7 +44,7 @@ class SlideshowWidget extends StatelessWidget {
                 spacing: 5,
                 dotColor: Colors.grey.shade600,
                 activeDotColor: Colors.red.shade400),
-            count: controller.slideshowList.length,
+            count: controller.popularMovieList.length,
           );
         }),
       ],

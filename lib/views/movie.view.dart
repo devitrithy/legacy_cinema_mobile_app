@@ -42,7 +42,9 @@ class MovieView extends StatelessWidget {
                           TrailerComponent(controller: controller),
                           Container(
                             decoration: BoxDecoration(
-                                color: Colors.black.withOpacity(0.6)),
+                                color: PublicUsed.isDark()
+                                    ? Colors.transparent
+                                    : Colors.black.withOpacity(0.6)),
                             child: Padding(
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 20.0),

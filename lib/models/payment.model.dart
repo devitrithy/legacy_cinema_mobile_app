@@ -1,12 +1,14 @@
 class PaymentModel {
   String? sid;
+  String? uid;
   bool? isBooking;
   List<ArrayDatas>? arrayDatas;
 
-  PaymentModel({this.sid, this.isBooking, this.arrayDatas});
+  PaymentModel({this.sid, this.uid, this.isBooking, this.arrayDatas});
 
   PaymentModel.fromJson(Map<String, dynamic> json) {
     sid = json['sid'];
+    uid = json['uid'];
     isBooking = json['isBooking'];
     if (json['arrayDatas'] != null) {
       arrayDatas = <ArrayDatas>[];
@@ -19,6 +21,7 @@ class PaymentModel {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = {};
     data['sid'] = sid;
+    data['uid'] = uid;
     data['isBooking'] = isBooking;
     if (arrayDatas != null) {
       data['arrayDatas'] = arrayDatas!.map((v) => v.toJson()).toList();
