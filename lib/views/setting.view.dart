@@ -75,18 +75,6 @@ class SettingView extends StatelessWidget {
                 ),
               ),
               const Divider(),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text("edit account".tr),
-                    IconButton(onPressed: () {}, icon: const Icon(Iconsax.edit))
-                  ],
-                ),
-              ),
-              const Divider(),
             ],
           ),
           ElevatedButton(

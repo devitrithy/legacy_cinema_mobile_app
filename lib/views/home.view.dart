@@ -6,7 +6,6 @@ import 'package:get/get.dart';
 
 import 'package:legacy_cinema/controllers/home.controller.dart';
 import 'package:legacy_cinema/utils/components/shared/background.comp.dart';
-import 'package:legacy_cinema/utils/components/shared/movie_card.dart';
 import 'package:legacy_cinema/utils/components/slideshow.comp.dart';
 import 'package:legacy_cinema/utils/public_used.dart';
 
@@ -38,11 +37,16 @@ class HomeView extends StatelessWidget {
                 slivers: [
                   SliverAppBar(
                     title: Container(
-                      height: 90,
+                      height: 100,
                     ),
                   ),
                   SliverToBoxAdapter(
                     child: SlideshowWidget(controller: controller),
+                  ),
+                  SliverAppBar(
+                    title: Container(
+                      height: 5,
+                    ),
                   ),
                   SliverToBoxAdapter(
                     child: Container(

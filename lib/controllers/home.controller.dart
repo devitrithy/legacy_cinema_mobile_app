@@ -180,7 +180,7 @@ class HomeController extends GetxController {
       await Stripe.instance.presentPaymentSheet();
       List<ArrayDatas> arrayDatas =
           selectedSeatList.map((item) => ArrayDatas(seat: item)).toList();
-      var res = await http.post(Uri.parse("${PublicUsed.apiEndPoint}/ticket"),
+      await http.post(Uri.parse("${PublicUsed.apiEndPoint}/ticket"),
           body: json.encode(PaymentModel(
                   arrayDatas: arrayDatas,
                   uid: PublicUsed.getUserId(),
@@ -191,6 +191,7 @@ class HomeController extends GetxController {
             'Content-Type': 'application/json',
             'Authorization': 'Bearer ${PublicUsed.getToken()}'
           });
+      selectedSeatList.value = [];
       Get.snackbar(
         'Payment',
         'Payment Successful',

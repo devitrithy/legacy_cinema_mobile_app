@@ -16,6 +16,9 @@ class SlideshowWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        SizedBox(
+          height: 50,
+        ),
         CarouselSlider(
           options: CarouselOptions(
             autoPlay: true,
@@ -24,7 +27,7 @@ class SlideshowWidget extends StatelessWidget {
             autoPlayAnimationDuration: const Duration(seconds: 1),
             autoPlayInterval: const Duration(seconds: 5),
             animateToClosest: true,
-            aspectRatio: 3,
+            aspectRatio: 1,
             enlargeCenterPage: true,
             onPageChanged: (index, reason) {
               controller.currentSlideshowIndex.value = index;
