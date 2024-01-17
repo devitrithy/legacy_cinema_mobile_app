@@ -1,3 +1,3 @@
-# legacy_cinema
+# Legacy Cinema App for Mobile
 
-A new Flutter project.
+run "flutter pub get" to get dependancy 
