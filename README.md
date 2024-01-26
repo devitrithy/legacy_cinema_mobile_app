@@ -10,7 +10,7 @@
 
 ![photo_5_2024-01-26_19-15-07](https://github.com/devitrithy/legacy_cinema_mobile_app/assets/99347002/38e5814e-e3fd-40a3-8c45-bb7a8026cbf8)
 
-## Selecting Seat
+## Selecting Seat (You can Zoom to Select Seat)
 
 ![photo_6_2024-01-26_19-15-07](https://github.com/devitrithy/legacy_cinema_mobile_app/assets/99347002/10c990b7-b81b-4685-a694-aba65d55578e)
 
