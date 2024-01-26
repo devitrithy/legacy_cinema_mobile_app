@@ -1,3 +1,4 @@
 # Legacy Cinema App for Mobile
 
-run "flutter pub get" to get dependancy 
+##Home Page
+https://imgur.com/a/JeL6TEC
