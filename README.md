@@ -1,5 +1,17 @@
 # Legacy Cinema App for Mobile
 
+This is the Mobile version of Legacy Cinema Booking Ticket System Application
+
+I made this in 2 weeks. It's not complete yet, I have some function to develope more
+
+- Make it searchable
+- Movie Type Sort
+- Cinema detail should have Showing Time for movie that show in the specific cinema
+
+Will update on it soon...
+
+Here Some of the page that I've made:
+
 ## Home Page
 
 ![photo_9_2024-01-26_19-15-07](https://github.com/devitrithy/legacy_cinema_mobile_app/assets/99347002/1775d0a1-71f6-4a51-8489-b70bc0c73d41)
